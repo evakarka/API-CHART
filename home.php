@@ -45,10 +45,10 @@ if (!isset($_SESSION['valid'])) {
             } else {
                 echo "Invalid user ID";
             }
-            ?>
+            ?>  
 
-            <a href="#">Change Profile</a>
-            <a href="logout.php"> <button class="btn">Log Out</button></a>
+            <a href="#">Change Profile</a>  
+            <a href="php/logout.php"> <button class="btn">Log Out</button></a>
         </div>
     </div>
 
@@ -57,15 +57,15 @@ if (!isset($_SESSION['valid'])) {
         <div class="main-box top">
             <div class="top">
                 <div class="box">
-                    <p>Hello <b>Ludiflex</b>, Welcome </p>
+                    <p>Hello <b><?php echo $res_Uname ?></b>, Welcome </p>
                 </div>
                 <div class="box">
-                    <p>Your email is <b>123@gmail.com</b>.</p>
+                    <p>Your email is <b><?php echo $res_Email ?></b>.</p>
                 </div>
             </div>
             <div class="bottom">
                 <div class="box">
-                    <p>And you are <b>20 years old</b>.</p>
+                    <p>And you are <b><?php echo $res_Age ?> years old</b>.</p>
                 </div>
             </div>
         </div>
