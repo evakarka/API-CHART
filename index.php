@@ -21,8 +21,8 @@ $id = $parts[2] ?? null;
 
 $database = new Database("localhost", "product_db", "root", "");
 
-$database->getConnection();
+$gateway = new ProductGateway($database);
 
-$controller = new ProductController;
+$controller = new ProductController($gateway);
 
 $constroller->processRequest($_SERVER["REQUEST_METHOD"], $id);
