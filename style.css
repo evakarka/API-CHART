@@ -136,3 +136,28 @@ main{
     margin-bottom: 10px;
     color: red;
 }
+
+
+/* home */
+.list-group-item {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #495057;
+}
+
+.list-group-item b {
+    color: #007bff;
+}
+
+.list-group-item:hover {
+    background-color: #e2e6ea;
+}
+
+.list-group-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
