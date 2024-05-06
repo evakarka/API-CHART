@@ -17,6 +17,10 @@ if ($parts[1] != "products"){
 
 $id = $parts[2] ?? null;
 
+$database = new Database("localhost", "product_db", "root", "");
+
+$database->getConnection();
+
 $controller = new ProductController;
 
 $constroller->processRequest($_SERVER["REQUEST_METHOD"], $id);
