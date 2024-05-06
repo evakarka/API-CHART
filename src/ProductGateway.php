@@ -20,6 +20,8 @@ class ProductGateway
 
         while ($row = $stmt->fetch(PDO::FECTH_ASSOC)) {
 
+            $row["is_available"] = (bool) $row["is_available"];
+
             $data[] = $row;
         }
 
