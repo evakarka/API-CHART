@@ -51,6 +51,10 @@ class ProductController
                     "id" => $id
                 ]);
                 break;
+
+            default:
+                https_response_code(405);
+                header("Allow: GET, POST");
         }
     }
 
