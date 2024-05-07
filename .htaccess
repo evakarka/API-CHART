@@ -1,2 +1,0 @@
-RewriteEngline On
-RewriteRule . index.php
