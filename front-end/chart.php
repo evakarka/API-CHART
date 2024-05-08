@@ -24,8 +24,10 @@
         </div>
 
         <div class="right-links">
+            <a href="profile.php"> <button class="btn">Profile</button> </a>
             <a href="php/logout.php"> <button class="btn">Log Out</button> </a>
         </div>
+
     </div>
 
     <!-- VALE MESA SAN CHART -->
