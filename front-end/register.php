@@ -12,38 +12,46 @@
         <div class="box form-box">
 
         <?php 
-         
-         include("php/config.php");
-         if(isset($_POST['submit'])){
+        include("php/config.php");
+        if(isset($_POST['submit'])){
             $username = $_POST['username'];
             $email = $_POST['email'];
             $age = $_POST['age'];
             $password = $_POST['password'];
+            $password_confirmation = $_POST['password_confirmation'];
 
-         //verifying the unique email
+            // Check if password is at least 8 characters
+            if(strlen($password) < 8) {
+                echo "<div class='message'>
+                        <p>Password must be at least 8 characters!</p>
+                    </div> <br>";
+                echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+            } elseif($password !== $password_confirmation) {
+                echo "<div class='message'>
+                        <p>Passwords didn't match try again!</p>
+                    </div> <br>";
+                echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+            } else {
+                // Hash the password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-         $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
+                //verifying the unique email
+                $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
+                if(mysqli_num_rows($verify_query) != 0 ){
+                    echo "<div class='message'>
+                            <p>This email is used, Try another One Please!</p>
+                        </div> <br>";
+                    echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
+                } else {
+                    mysqli_query($con,"INSERT INTO users(Username,Email,Age,Password) VALUES('$username','$email','$age','$hashed_password')") or die("Error Occurred");
+                    echo "<div class='message'>
+                            <p>Registration successful!</p>
+                        </div> <br>";
+                    echo "<a href='index.php'><button class='btn'>Login Now</button>";
+                }
+            }
+        } else {
 
-         if(mysqli_num_rows($verify_query) !=0 ){
-            echo "<div class='message'>
-                      <p>This email is used, Try another One Please!</p>
-                  </div> <br>";
-            echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
-         }
-         else{
-
-            mysqli_query($con,"INSERT INTO users(Username,Email,Age,Password) VALUES('$username','$email','$age','$password')") or die("Erroe Occured");
-
-            echo "<div class='message'>
-                      <p>Registration successfully!</p>
-                  </div> <br>";
-            echo "<a href='index.php'><button class='btn'>Login Now</button>";
-         
-
-         }
-
-         }else{
-         
         ?>
 
             <header>Sign Up</header>
@@ -65,6 +73,10 @@
                 <div class="field input">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" autocomplete="off" required>
+                </div>
+                <div class="field input">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
                 </div>
 
                 <div class="field">

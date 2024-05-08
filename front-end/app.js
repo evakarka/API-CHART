@@ -7,7 +7,7 @@ async function dummyChart() {
 let ctx = document.getElementById('myChart').getContext('2d');
 
 let chart = new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
 
     data: {
         labels: chartCumulative_deaths,
@@ -19,7 +19,7 @@ let chart = new Chart(ctx, {
         },
         {
           label: 'Date',
-          backgroundColor: 'white',
+          backgroundColor: 'orange',
           borderColor: 'rgb(255, 255, 255)',
           data: chartDate_reported
         },
