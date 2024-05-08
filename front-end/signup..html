@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>Sign Up</header>
+            <form action="process-signup.php" method="post" novalidate>
+                <div class="field input">
+                    <label for="name">Username</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                </div>
+
+                <div class="field input">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age">
+                </div>
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="field input">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation">
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Register" required>
+                </div>
+                <div class="links">
+                    Already a member? <a href="login.php">Sign In</a>
+                </div>
+            </form>
+</body>
+</html>
