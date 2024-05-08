@@ -1,6 +1,10 @@
-<?php
-session_start();
-include("php/config.php");
+<?php 
+   session_start();
+
+   include("php/config.php");
+   if(!isset($_SESSION['valid'])){
+    header("Location: login.php");
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +26,7 @@ include("php/config.php");
             <?php 
             
             $id = $_SESSION['id'];
-            $query = mysqli_query($con,"SELECT * FROM users WHERE Id=$id");
+            $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
 
             while($result = mysqli_fetch_assoc($query)){
                 $res_Uname = $result['Username'];
@@ -32,15 +36,9 @@ include("php/config.php");
             }
             
             echo "<a href='edit.php?Id=$res_id'>Change Profile</a>";
-
             ?>
 
             <a href="php/logout.php"> <button class="btn">Log Out</button> </a>
-
-            <!-- Προσθήκη κουμπιού Delete Account -->
-            <form action="delete_account.php" method="post" style="display: inline;">
-                <input type="submit" class="btn" name="submit" value="Delete Account">
-            </form>
 
         </div>
     </div>
