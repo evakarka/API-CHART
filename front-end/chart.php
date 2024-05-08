@@ -1,10 +1,21 @@
+<?php 
+   session_start();
+
+   include("php/config.php");
+   if(!isset($_SESSION['valid'])){
+    header("Location: login.php");
+   }
+?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light">
 <head>
-    <title>Home</title>
+    <title>COVID-19 Journo - Chart</title>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <div class="nav">
@@ -23,7 +34,7 @@
     
     <h2>COVID-19</h2>
     </div>
-    <canvas id="myChart" ></canvas>
+    <canvas id="myChart" width="800" height="300"></canvas>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
