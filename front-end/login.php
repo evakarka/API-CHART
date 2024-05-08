@@ -64,13 +64,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div class="field">
-                    
                     <input type="submit" class="btn" name="submit" value="Login">
                 </div>
                 <div class="links">
                     Don't have account? <a href="signup.html">Sign Up Now</a>
                 </div>
             </form>
+
+            <a href="forgot-password.php">Forgot Password?</a>
         </div>
     </div>
 
