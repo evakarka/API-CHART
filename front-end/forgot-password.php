@@ -3,21 +3,28 @@
 <head>
     <title>Forgot Password</title>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya/dist/bahunya.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+<body>
 
-    <h1>Forgot Password</h1>
-    <p style="color:orange">Forgotten your password? Don't worry!</p>
+    <div class="container">
+        <div class="box form-box">
+            <header>Forgot Password</header>
+            <form method="post" action="send-password-reset.php">
 
-    <form method="post" action="send-password-reset.php">
-
-        <label for="email">Enter your E-mail</label>
-        <input type="email" name="email" id="email">
-
-        <button>Send link</button>
-
-    </form>
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+    
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Send" required>
+                </div>
+            </form>          
+        </div>
+    </div>
 
 </body>
+</html>

@@ -29,11 +29,9 @@ if ($mysqli->affected_rows) {
     $mail->addAddress($email);
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
-    <h1>Chart Test Website</h1>
-    <pre>We heard that you lost your GitHub password. Sorry about that!
-    But don’t worry!</pre>
-    Click <a href="http://localhost/API-Chart/frontend/reset-password.php?token=$token">here</a>
-    to reset your password!
+
+    Click <a href="http://localhost/API-CHART/front-end/reset-password.php?token=$token">here</a> 
+    to reset your password.
 
     END;
 
@@ -43,10 +41,9 @@ if ($mysqli->affected_rows) {
 
     } catch (Exception $e) {
 
-        echo "Message could not be sent. There was a PHP Mailer Error: {$mail->ErrorInfo}";
+        echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
 
     }
-
 }
 
-header("Location: email-sent.html");
+echo "Message sent, please check your inbox.";

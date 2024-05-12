@@ -20,38 +20,44 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 if ($user === null) {
-    die("Token not found!");
+    die("token not found");
 }
 
 if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("Token has expired!");
+    die("token has expired");
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reset Password</title>
+    <title>Login</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya/dist/bahunya.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <div class="container">
+        <div class="box form-box">
+            <header>Reset Password</header>
 
-    <h1>Reset Password</h1>
+            <form method="post" action="process-reset-password.php">
+                <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+                <div class="field input">
+                    <label for="password">New password</label>
+                    <input type="password" id="password" name="password">
+                </div>
 
-    <form method="post" action="process-reset-password.php">
+                <div class="field input">
+                    <label for="password_confirmation">Confirm password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation">
+                </div>
 
-        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
-
-        <label for="password">Enter your new password</label>
-        <input type="password" id="password" name="password">
-
-        <label for="password_confirmation">Confirm password</label>
-        <input type="password" id="password_confirmation"
-               name="password_confirmation">
-
-        <button>Reset</button>
-    </form>
-
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
