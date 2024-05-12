@@ -24,15 +24,8 @@
       while($row = $result->fetch(PDO::FETCH_ASSOC)){
          extract($row);
          $post_item = array(
-            'Date_reported'  => $Date_reported,
-            'Country_code' => $Country_code,
-            'Country' => $Country,
-            'WHO_region' => $WHO_region,
-            'New_cases' => $New_cases,
-            'Cumulative_cases' => $Cumulative_cases,
-            'New_deaths' => $New_deaths,
-            'Cumulative_deaths' => $Cumulative_deaths
-
+            'Date' => $Date,
+            'Temp' => $Temp
          );
          array_push($post_arr['data'], $post_item);
       }

@@ -3,17 +3,11 @@
 class Post{
     //db stuff
     private $conn;
-    private $table = 'covid';
+    private $table = 'dtemperatures';
 
     //post properties
-    public $Date_reported;
-    public $Country_code;
-    public $Country;
-    public $WHO_region;
-    public $New_cases;
-    public $Cumulative_cases;
-    public $New_deaths;
-    public $Cumulative_deaths;
+    public $Date;
+    public $Temp;
 
     //constructor with db connection
     public function __construct($db){
@@ -23,16 +17,10 @@ class Post{
      public function read() {
         // Create query with proper spacing and aliasing
         $query = 'SELECT
-            c.Date_reported,
-            c.Country_code,
-            c.Country,
-            c.WHO_region,
-            c.New_cases,
-            c.Cumulative_cases,
-            c.New_deaths,
-            c.Cumulative_deaths
+            d.Date,
+            d.Temp
         FROM
-            ' . $this->table . ' c';
+            ' . $this->table . ' d';
         //prepare statement
         $stmt = $this->conn->prepare($query);
         //execute query
