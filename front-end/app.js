@@ -1,41 +1,40 @@
-var chartDate = [], chartTemp = []
+var chartDate = [], chartTemp = [];
 
 async function dummyChart() {
-  await getDummyData()
+  await getDummyData();
 
-let ctx = document.getElementById('myChart').getContext('2d');
+  let ctx = document.getElementById('myChart').getContext('2d');
 
-let chart = new Chart(ctx, {
-    type: 'bar',
-
+  let chart = new Chart(ctx, {
+    type: 'line',
     data: {
-        labels: chartCumulative_deaths,
-        datasets: [{
-            label: 'Country',
-            backgroundColor: 'blue',
-            borderColor: 'rgb(255, 255, 255)',
-            data: chartDate
-        },
-        {
-          label: 'Date',
-          backgroundColor: 'orange',
-          borderColor: 'rgb(255, 255, 255)',
-          data: chartTemp
-        }
-      ]
+      labels: chartDate,
+      datasets: [{
+        label: 'Date',
+        backgroundColor: 'red',
+        borderColor: 'rgb(255, 255, 255)',
+        data: chartDate
     },
+    {
+      label: 'Date',
+      backgroundColor: 'blue',
+      borderColor: 'rgb(255, 255, 255)',
+      data: chartTemp
+    }
+  ]
 
+    },
     options: {
       tooltips: {
         mode: 'index'
       } 
     }
-});
+  });
 }
 
-dummyChart()
+dummyChart();
 
-//Fetch Data from API
+// Fetch Data from API
 
 async function getDummyData() {
   const apiUrl = "http://localhost/API-CHART/API/api/read.php"
@@ -49,4 +48,3 @@ async function getDummyData() {
   chartDate  = Date
   chartTemp  = Temp
 }
-
