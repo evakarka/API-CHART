@@ -31,7 +31,7 @@ if (isset($_SESSION["user_id"])) {
 <body class="bg-light">
     <div class="nav">
         <div class="logo">
-            <p><a href="home.html">COVID-19 Journo</a></p>
+            <p><a href="intex.php">COVID-19 Journo</a></p>
         </div>
 
         <div class="right-links">
