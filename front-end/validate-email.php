@@ -2,14 +2,22 @@
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = sprintf("SELECT * FROM user
-                WHERE email = '%s'",
-                $mysqli->real_escape_string($_GET["email"]));
-                
-$result = $mysqli->query($sql);
+if(isset($_GET["email"]) && filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
+    $email = $mysqli->real_escape_string($_GET["email"]);
 
-$is_available = $result->num_rows === 0;
+    $sql = sprintf("SELECT * FROM user WHERE email = '%s'", $email);
 
-header("Content-Type: application/json");
+    $result = $mysqli->query($sql);
 
-echo json_encode(["available" => $is_available]);
+    $is_available = $result->num_rows === 0;
+
+    header("Content-Type: application/json");
+
+    echo json_encode(["available" => $is_available]);
+} else {
+    $error_message = "Invalid email address.";
+    header("Content-Type: application/json");
+    echo json_encode(["error" => $error_message]);
+}
+
+?>
