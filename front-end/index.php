@@ -156,6 +156,9 @@ if (isset($_SESSION["user_id"])) {
                   <a class="nav-link active" aria-current="page" href="#" style="color: #002144; font-weight: bold;">Home</a>
                 </li>
                 <li class="nav-item mx-2">
+                    <a class="nav-link" href="chart.php" style="color: #002144; font-weight: bold;">Chart</a>
+                </li>
+                <li class="nav-item mx-2">
                     <a class="nav-link" href="about.php" style="color: #002144; font-weight: bold;">About</a>
                 </li>
                 <li class="nav-item mx-2">
@@ -166,11 +169,10 @@ if (isset($_SESSION["user_id"])) {
               <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
                 
                 <?php if (isset($user)): ?>
-                  <p><a class="btn btn-outline-primary btn-sm" href="logout.php">Logout</a></p>
-                  
+                  <a href="logout.php" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color: #f94ca4">Logout</a>
                 <?php else: ?>
                   
-                <p><a href="loginform.html" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                <p><a href="login.php" class="text-white text-decoration-none px-3 py-1 rounded-4"
                 style="background-color: #fff">Login</a> <a href="signup.html" 
                 class="text-white text-decoration-none px-3 py-1 rounded-4"
                 style="background-color: #f94ca4">Sign Up</a>
