@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $email = $mysqli->real_escape_string($_POST["email"]);
 
-        $sql = sprintf("SELECT * FROM user WHERE email = '%s'", $email);
+        $sql = sprintf("SELECT * FROM users WHERE email = '%s'", $email);
 
         $result = $mysqli->query($sql);
 
@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Login</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
     <link rel="stylesheet" href="style/style.css">

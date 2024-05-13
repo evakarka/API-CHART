@@ -1,5 +1,7 @@
 <?php
 
+// Άλλος κώδικας εδώ
+
 if (empty($_POST["name"])) {
     die("Name is required");
 }
@@ -28,7 +30,22 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "INSERT INTO user (name, email, password_hash)
+// Ελέγχουμε αν η διεύθυνση email υπάρχει ήδη στη βάση δεδομένων
+$email = $_POST['email'];
+$check_existing_email_sql = "SELECT COUNT(*) as count FROM users WHERE email = ?";
+$stmt = $mysqli->prepare($check_existing_email_sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$email_count = $row['count'];
+
+if ($email_count > 0) {
+    // Αν η διεύθυνση email υπάρχει ήδη, εμφανίζουμε ένα μήνυμα σφάλματος
+    die("Email address already exists.");
+}
+
+$sql = "INSERT INTO users (name, email, password_hash)
         VALUES (?, ?, ?)";
         
 $stmt = $mysqli->stmt_init();
@@ -49,9 +66,7 @@ if ($stmt->execute()) {
     
 } else {
     
-    if ($mysqli->errno === 1062) {
-        die("Email already taken");
-    } else {
-        die($mysqli->error . " " . $mysqli->errno);
-    }
+    die("Failed to register user: " . $mysqli->error);
 }
+
+?>

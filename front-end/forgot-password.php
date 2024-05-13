@@ -3,6 +3,7 @@
 <head>
     <title>Forgot Password</title>
     <meta charset="UTF-8">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
     <link rel="stylesheet" href="style/style.css">
 </head>
