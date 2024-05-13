@@ -6,7 +6,7 @@ $token_hash = hash("sha256", $token);
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "SELECT * FROM user
+$sql = "SELECT * FROM users
         WHERE reset_token_hash = ?";
 
 $stmt = $mysqli->prepare($sql);
@@ -20,11 +20,11 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 if ($user === null) {
-    die("token not found");
+    die("Token not found");
 }
 
 if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("token has expired");
+    die("Token has expired");
 }
 
 ?>
@@ -41,7 +41,7 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
         <div class="box form-box">
             <header>Reset Password</header>
 
-            <form method="post" action="process-reset-password.php">
+            <form method="post" action="proccess-reset-password.php">
                 <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
                 <div class="field input">
                     <label for="password">New password</label>
@@ -54,7 +54,7 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
                 </div>
 
                 <div class="field">
-                    <input type="submit" class="btn" name="submit" value="Login">
+                    <input type="submit" class="btn" name="submit" value="Reset Password">
                 </div>
             </form>
         </div>

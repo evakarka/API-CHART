@@ -10,7 +10,7 @@ $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
 
 $mysqli = require __DIR__ . "/database.php";
 
-$sql = "UPDATE user
+$sql = "UPDATE users
         SET reset_token_hash = ?,
             reset_token_expires_at = ?
         WHERE email = ?";
@@ -47,3 +47,4 @@ if ($mysqli->affected_rows) {
 }
 
 echo "Message sent, please check your inbox.";
+?>
