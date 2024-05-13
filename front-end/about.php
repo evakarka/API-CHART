@@ -42,11 +42,34 @@ if (isset($_SESSION["user_id"])) {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 <style>
-  .boxtitle{
+
+.boxtitle {
+    background-color: #f8f9fa;
+    padding: 120px 50px;
     border: 1px solid #fff;
     border-radius: 10px;
-    padding: 200px 0;
-  }
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .boxtitle h2 {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .boxtitle hr {
+        border: none;
+        background-color: #7c4dff;
+    }
+
+    .boxtitle ul li {
+        margin-bottom: 10px;
+        color: #666;
+    }
+
+    .boxtitle ul li i {
+        color: #570ebd;
+    }
+
   
 .container{
     display: flex;
@@ -153,10 +176,10 @@ if (isset($_SESSION["user_id"])) {
             <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
               <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" style="color: #002144; font-weight: bold;">Home</a>
+                  <a class="nav-link active" aria-current="page" href="index.php" style="color: #002144; font-weight: bold;">Home</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="about.php" style="color: #002144; font-weight: bold;">About</a>
+                    <a class="nav-link" href="#" style="color: #002144; font-weight: bold;">About</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="contact.php" style="color: #002144; font-weight: bold;">Contact</a>
@@ -182,21 +205,18 @@ if (isset($_SESSION["user_id"])) {
       </nav>
 
       <div class="container boxtitle">
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-8">
-                <h2 class="text-center mb-4">Scientific journals on Daily News data analysis with Chart</h2>
-                <div class="mb-3">
-                    <p>This application calls upon global data published in <a href="https://catalog.data.gov/dataset/?res_format=CSV">DATA.GOV</a>.</p>
-                    <p>In order to use it, you have to login to the platform.</p>
-                </div>
-                <?php if (isset($user)): ?>
-                    <p><a class="btn btn-outline-primary btn-sm" href="logout.php">Logout</a></p>
-                <?php else: ?>
-                    <p><a class="btn btn-outline-primary btn-sm" href="login.php">Login</a> or <a class="btn btn-outline-primary btn-sm" href="signup.html">Sign Up</a></p>
-                <?php endif; ?>
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-10">
+        <h2 class="text-center mb-4">Contact</h2>
+            <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
+            <ul class="list-unstyled text-center mb-4">
+                <p>This application is developed for academic assessment.</p>
+                <p>Email: 100675745@unimail.derby.ac.uk</p>
             </div>
         </div>
     </div>
+</div>
+
 
 
 

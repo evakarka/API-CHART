@@ -42,85 +42,108 @@ if (isset($_SESSION["user_id"])) {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 <style>
-  .boxtitle{
+    .boxtitle {
+    background-color: #f8f9fa;
+    padding: 120px 50px;
     border: 1px solid #fff;
     border-radius: 10px;
-    padding: 200px 0;
-  }
-  
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 0;
-}
-.box{
-    background: #fdfdfd;
-    display: flex;
-    flex-direction: column;
-    padding: 25px 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
-                0 32px 64px -48px rgba(0, 0, 0, 0.5);
-}
-.form-box{
-    width: 450px;
-    margin: 0px 10px;
-}
-.form-box header{
-    font-size: 25px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 10px;
-}
-.form-box form .field{
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: column;
-}
-.form-box form .input input{
-    height: 40px;
-    width: 100%;
-    font-size: 16px;
-    padding: 0 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-.btn{
-  height: 35px;
-    background: rgba(76, 68, 128, 0.808);
-    border-radius: 5px;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 10px;
-    cursor: pointer;
-    transition: all .3s;
-    margin-top: 10px;
-    padding: 0px 10px;
-    text-align: center; /* Ευθυγράμμιση του κειμένου στο κέντρο */
-    line-height: 35px; /* Κεντράρισμα του κειμένου κάθετα μέσα στο κουμπί */
-    
-}
-.btn:hover{
-    opacity: 0.82;
-}
-.sumbit{
-    width: 100%;
-}
-.link{
-    margin-bottom: 15px;
-}
-.btn-outline-primary {
-    border: 1px solid rgb(119, 44, 229); /* Μωβ περίγραμμα */
-    box-shadow: 0 0 10px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
-    /* rgb(186, 253, 211) */
-}
-.btn-sm {
-    box-shadow: 0 0 6px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
-}
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .boxtitle h2 {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .boxtitle hr {
+        border: none;
+        background-color: #7c4dff;
+    }
+
+    .boxtitle ul li {
+        margin-bottom: 10px;
+        color: #666;
+    }
+
+    .boxtitle ul li i {
+        color: #002144;
+    }
+
+
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+    }
+    .box{
+        background: #fdfdfd;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 25px;
+        border-radius: 20px;
+        box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+                    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    }
+    .form-box{
+        width: 450px;
+        margin: 0px 10px;
+    }
+    .form-box header{
+        font-size: 25px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e6e6e6;
+        margin-bottom: 10px;
+    }
+    .form-box form .field{
+        display: flex;
+        margin-bottom: 10px;
+        flex-direction: column;
+    }
+    .form-box form .input input{
+        height: 40px;
+        width: 100%;
+        font-size: 16px;
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+    .btn{
+    height: 35px;
+        background: rgba(76, 68, 128, 0.808);
+        border-radius: 5px;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 10px;
+        cursor: pointer;
+        transition: all .3s;
+        margin-top: 10px;
+        padding: 0px 10px;
+        text-align: center; /* Ευθυγράμμιση του κειμένου στο κέντρο */
+        line-height: 35px; /* Κεντράρισμα του κειμένου κάθετα μέσα στο κουμπί */
+        
+    }
+    .btn:hover{
+        opacity: 0.82;
+    }
+    .sumbit{
+        width: 100%;
+    }
+    .link{
+        margin-bottom: 15px;
+    }
+    .btn-outline-primary {
+        border: 1px solid rgb(119, 44, 229); /* Μωβ περίγραμμα */
+        box-shadow: 0 0 10px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+        /* rgb(186, 253, 211) */
+    }
+    .btn-sm {
+        box-shadow: 0 0 6px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+    }
 
 </style>
 </head>
@@ -153,13 +176,13 @@ if (isset($_SESSION["user_id"])) {
             <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
               <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" style="color: #002144; font-weight: bold;">Home</a>
+                  <a class="nav-link active" aria-current="page" href="index.php" style="color: #002144; font-weight: bold;">Home</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="about.php" style="color: #002144; font-weight: bold;">About</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="contact.php" style="color: #002144; font-weight: bold;">Contact</a>
+                    <a class="nav-link" href="#" style="color: #002144; font-weight: bold;">Contact</a>
                 </li>
               </ul>
               <!-- Login / Sign up -->
@@ -182,21 +205,21 @@ if (isset($_SESSION["user_id"])) {
       </nav>
 
       <div class="container boxtitle">
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-8">
-                <h2 class="text-center mb-4">Scientific journals on Daily News data analysis with Chart</h2>
-                <div class="mb-3">
-                    <p>This application calls upon global data published in <a href="https://catalog.data.gov/dataset/?res_format=CSV">DATA.GOV</a>.</p>
-                    <p>In order to use it, you have to login to the platform.</p>
-                </div>
-                <?php if (isset($user)): ?>
-                    <p><a class="btn btn-outline-primary btn-sm" href="logout.php">Logout</a></p>
-                <?php else: ?>
-                    <p><a class="btn btn-outline-primary btn-sm" href="login.php">Login</a> or <a class="btn btn-outline-primary btn-sm" href="signup.html">Sign Up</a></p>
-                <?php endif; ?>
-            </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-10"> <!-- Αυξήστε τον αριθμό των κολόνων για να καθορίσετε το μήκος -->
+            <h2 class="text-center mb-4">Contact</h2>
+            <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
+            <ul class="list-unstyled text-center mb-4">
+                <li><i class="fas fa-home mr-2"></i> Athens, 10679, GR</li>
+                <li><i class="fas fa-envelope mr-2"></i> info@example.com</li>
+                <li><i class="fas fa-phone mr-2"></i> +30 690 000 00</li>
+                <li><i class="fas fa-print mr-2"></i> +30 210 000 00</li>
+            </ul>
         </div>
     </div>
+</div>
+
+
 
 
 
