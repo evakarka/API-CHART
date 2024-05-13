@@ -1,48 +1,59 @@
-const validation = new JustValidate("#signup");
-
-validation
-    .addField("#name", [
-        {
-            rule: "required"
-        }
-    ])
-    .addField("#email", [
-        {
-            rule: "required"
+const validation = new JustValidate("#signup", {
+    rules: {
+        name: {
+            required: true
         },
-        {
-            rule: "email"
+        email: {
+            required: true,
+            email: true,
+            remote: {
+                url: "validate-email.php",
+                data: {
+                    email: function () {
+                        return document.getElementById("email").value;
+                    }
+                }
+            }
         },
-        {
-            validator: (value) => () => {
-                return fetch("validate-email.php?email=" + encodeURIComponent(value))
-                       .then(function(response) {
-                           return response.json();
-                       })
-                       .then(function(json) {
-                           return json.available;
-                       });
-            },
-            errorMessage: "email already taken"
-        }
-    ])
-    .addField("#password", [
-        {
-            rule: "required"
+        age: {
+            required: true,
+            numeric: true
         },
-        {
-            rule: "password"
+        password: {
+            required: true,
+            strength: {
+                custom: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$",
+                message: "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number"
+            }
+        },
+        password_confirmation: {
+            required: true,
+            equalTo: "#password"
         }
-    ])
-    .addField("#password_confirmation", [
-        {
-            validator: (value, fields) => {
-                return value === fields["#password"].elem.value;
-            },
-            errorMessage: "Passwords should match"
+    },
+    messages: {
+        name: {
+            required: "Please enter your username"
+        },
+        email: {
+            required: "Please enter your email",
+            email: "Please enter a valid email address",
+            remote: "Email already taken"
+        },
+        age: {
+            required: "Please enter your age",
+            numeric: "Please enter a valid age"
+        },
+        password: {
+            required: "Please enter your password",
+            strength: "Please enter a stronger password"
+        },
+        password_confirmation: {
+            required: "Please confirm your password",
+            equalTo: "Passwords should match"
         }
-    ])
-    .onSuccess((event) => {
-        document.getElementById("signup").submit();
-    });
-    
+    },
+    submitHandler: function (form, values) {
+        form.submit();
+    }
+});

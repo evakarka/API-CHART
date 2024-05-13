@@ -45,8 +45,11 @@ if ($email_count > 0) {
     die("Email address already exists.");
 }
 
-$sql = "INSERT INTO users (name, email, password_hash)
-        VALUES (?, ?, ?)";
+// Προσθήκη τιμής για το πεδίο "age"
+$age = $_POST['age'] ?? null; // Εάν ο χρήστης δεν έχει παράσχει τιμή για το πεδίο "age", χρησιμοποιήστε την τιμή null
+
+$sql = "INSERT INTO users (name, email, age, password_hash)
+        VALUES (?, ?, ?, ?)";
         
 $stmt = $mysqli->stmt_init();
 
@@ -54,9 +57,10 @@ if ( ! $stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sss",
+$stmt->bind_param("ssss",
                   $_POST["name"],
                   $_POST["email"],
+                  $age,
                   $password_hash);
                   
 if ($stmt->execute()) {
