@@ -167,11 +167,17 @@ if (isset($_SESSION["user_id"])) {
               </ul>
               <!-- Login / Sign up -->
               <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                <a href="loginform.html" class="text-white">Login</a>
-                <a href="registerform.html" 
+                
+                <?php if (isset($user)): ?>
+                  <p><a class="btn btn-outline-primary btn-sm" href="logout.php">Logout</a></p>
+                  
+                <?php else: ?>
+                  
+                <p><a href="loginform.html" class="text-white text-decoration-none px-3 py-1 rounded-4"
+                style="background-color: #fff">Login</a> <a href="signup.html" 
                 class="text-white text-decoration-none px-3 py-1 rounded-4"
-                style="background-color: #f94ca4"
-                >Sign Up</a>
+                style="background-color: #f94ca4">Sign Up</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -240,7 +246,7 @@ if (isset($_SESSION["user_id"])) {
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold">SwiftSkies</h6>
+                        <h6 class="text-uppercase fw-bold">DailyNewsChart</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto"
                             style="width: 60px; background-color: #7c4dff; height: 2px" />
                         <p>
@@ -313,7 +319,7 @@ if (isset($_SESSION["user_id"])) {
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             © 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">SwiftSkies.com</a>
+            <a class="text-white" href="https://mdbootstrap.com/">DailyNewsChart.com</a>
         </div>
         <!-- Copyright -->
     </footer>
