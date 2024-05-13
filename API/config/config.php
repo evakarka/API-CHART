@@ -10,6 +10,6 @@
     $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    define('COVID-19 Journo', 'Journal on COVID-19');
+    define('DailyNews', 'Journal on daily minimum temperatures ');
 
 ?>

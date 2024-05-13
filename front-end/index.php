@@ -39,7 +39,7 @@ if (isset($_SESSION["user_id"])) {
     <div class="container">
         <div class="row">
             <div class="col-sm-8 offset-md-3">
-                <h2 class="text-center mt-4 mb-4">Scientific journals on daily minimum temperatures data analysis</h2>
+                <h2 class="text-center mt-4 mb-4">Scientific journals on Daily Minimum Temperatures data analysis</h2>
                 <br>
                 <div class="input-group mb-3">
                     <p>
@@ -47,7 +47,7 @@ if (isset($_SESSION["user_id"])) {
                         <a href="https://catalog.data.gov/dataset/?res_format=CSV">DATA.GOV</a>
                     </p>
                     <p>
-                    To utilize it, you need to log in to the platform.
+                    In order to use it, you have to login to the platform.
                     </p>
                 </div>
 
