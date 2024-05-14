@@ -66,12 +66,14 @@ if (isset($_SESSION["user_id"])) {
         </div>
       </nav>
 
-    <div class="card text-center m-5">
-        <div class="card-header">
-            <h2 class="text-center">Daily Minimum Temperatures</h2>
+      <div class="card text-center m-5">
+        <div class="card text-center m-5">
+            <div class="card-header">
+                <h2 class="text-center">Daily Minimum Temperatures</h2>
+            </div>
+            <canvas id="myChart" width="800" height="300"></canvas>
         </div>
-        <canvas id="myChart" width="800" height="300"></canvas>
-    </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
