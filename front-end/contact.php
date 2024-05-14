@@ -383,7 +383,7 @@ p {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-width: 500px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
     max-height: 400px;
-    margin: 190px auto; /* Κεντράρει το κουτί οριζόντια */
+    margin: 200px auto; /* Κεντράρει το κουτί οριζόντια */
 }
 
 .boxtitle h2 {
@@ -512,43 +512,49 @@ p {
   <a href="contact.php">Contact</a>
 </div>
 
-      <div class="container boxtitle">
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-            <h2 class="text-center mb-4">Contact</h2>
-                <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
-                <ul class="list-unstyled text-center mb-4">
-                    <p>This application is developed for academic assessment.</p>
-                    <p>Email: 100675745@unimail.derby.ac.uk</p>
-                </div>
-            </div>
-        </div>
+
+<div class="container boxtitle">
+  <div class="row justify-content-center mt-5">
+      <div class="col-lg-10"> <!-- Αυξήστε τον αριθμό των κολόνων για να καθορίσετε το μήκος -->
+          <h2 class="text-center mb-4">Contact</h2>
+          <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
+          <ul class="list-unstyled text-center mb-4">
+              <li><i class="fas fa-home mr-2"></i> Athens, 10679, GR</li>
+              <li><i class="fas fa-envelope mr-2"></i> info@example.com</li>
+              <li><i class="fas fa-phone mr-2"></i> +30 690 000 00</li>
+              <li><i class="fas fa-print mr-2"></i> +30 210 000 00</li>
+          </ul>
+      </div>
     </div>
+</div>
 
 
-    <div class="footer">
-  <p>&copy; 2024 DailyNewsChart. All rights reserved.</p>
-  <p>
+<div class="footer">
+  <p class="fs-5">&copy; 2024 DailyNewsChart. All rights reserved.</p>
+  <p class="fs-5">
     <a href="#">Privacy Policy</a> | 
     <a href="#">Terms of Service</a> | 
     <a href="contact.php">Contact Us</a>
   </p>
 </div>  
         
-<div class="container boxtitle">
-<div class="row justify-content-center mt-5">
-  <div class="col-lg-10"> <!-- Αυξήστε τον αριθμό των κολόνων για να καθορίσετε το μήκος -->
-      <h2 class="text-center mb-4">Contact</h2>
-      <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
-      <ul class="list-unstyled text-center mb-4">
-          <li><i class="fas fa-home mr-2"></i> Athens, 10679, GR</li>
-          <li><i class="fas fa-envelope mr-2"></i> info@example.com</li>
-          <li><i class="fas fa-phone mr-2"></i> +30 690 000 00</li>
-          <li><i class="fas fa-print mr-2"></i> +30 210 000 00</li>
-      </ul>
-  </div>
-</div>
-</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('hamburger');
+    var sidebar = document.getElementById('sidebar');
+    var closebtn = document.getElementById('closebtn');
+
+    hamburger.addEventListener('click', function() {
+        sidebar.style.width = '250px';  // Ανοίγει το sidebar
+    });
+
+    closebtn.addEventListener('click', function() {
+        sidebar.style.width = '0';  // Κλείνει το sidebar
+    });
+});
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

@@ -383,7 +383,7 @@ p {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-width: 500px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
     max-height: 400px;
-    margin: 190px auto; /* Κεντράρει το κουτί οριζόντια */
+    margin: 200px auto; /* Κεντράρει το κουτί οριζόντια */
 }
 
 .boxtitle h2 {
@@ -506,8 +506,8 @@ p {
 
 <div id="sidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
-  <a href="#">Home</a>
-  <a href="about.php">About</a>
+  <a href="index.php">Home</a>
+  <a href="#">About</a>
   <a href="#">Services</a>
   <a href="contact.php">Contact</a>
 </div>
@@ -518,8 +518,8 @@ p {
             <h2 class="text-center mb-4">Contact</h2>
                 <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
                 <ul class="list-unstyled text-center mb-4">
-                    <p>This application is developed for academic assessment.</p>
-                    <p>Email: 100675745@unimail.derby.ac.uk</p>
+                    <p class="fs-5">This application is developed for academic assessment.</p>
+                    <p class="fs-5">Email: 100675745@unimail.derby.ac.uk</p>
                 </div>
             </div>
         </div>
@@ -527,14 +527,31 @@ p {
 
 
     <div class="footer">
-  <p>&copy; 2024 DailyNewsChart. All rights reserved.</p>
-  <p>
+  <p class="fs-5">&copy; 2024 DailyNewsChart. All rights reserved.</p>
+  <p class="fs-5">
     <a href="#">Privacy Policy</a> | 
     <a href="#">Terms of Service</a> | 
     <a href="contact.php">Contact Us</a>
   </p>
 </div>  
         
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('hamburger');
+    var sidebar = document.getElementById('sidebar');
+    var closebtn = document.getElementById('closebtn');
+
+    hamburger.addEventListener('click', function() {
+        sidebar.style.width = '250px';  // Ανοίγει το sidebar
+    });
+
+    closebtn.addEventListener('click', function() {
+        sidebar.style.width = '0';  // Κλείνει το sidebar
+    });
+});
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
