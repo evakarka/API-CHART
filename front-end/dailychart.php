@@ -351,6 +351,40 @@ if (isset($_SESSION["user_id"])) {
             padding: 0.8em 1.5em;
         }
         }
+
+        .btn{
+            background
+        }
+
+        .field input[type="text"],
+        .field input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #0C0C27;
+            color: white;
+        }
+
+        .field input[type="submit"] {
+            width: 100%;
+            padding: 4px 10px; 
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4081;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .field input[type="submit"]:hover {
+            background-color: #e00070;
+        }
     </style>
 
 </head>
@@ -372,7 +406,25 @@ if (isset($_SESSION["user_id"])) {
   </div>
 </div>
 
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+  <a href="#">Home</a>
+  <a href="about.php">About</a>
+  <a href="#">Services</a>
+  <a href="contact.php">Contact</a>
+</div>
+
 <br>
+
+    <div class="card text-center m-5">
+    <button class="btn btn-primary float-end">Κουμπί Δεξιά</button>
+        <div class="card text-center m-5">
+            <div class="card-header">
+                <h2 class="text-center">Daily Minimum Temperatures</h2>
+            </div>
+            <canvas id="myChart" width="800" height="300"></canvas>
+        </div>
+    </div>
 
 
 
