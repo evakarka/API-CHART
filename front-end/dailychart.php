@@ -373,19 +373,8 @@ if (isset($_SESSION["user_id"])) {
 </div>
 
 <br>
-<div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
-  <a href="#">Home</a>
-  <a href="about.php">About</a>
-  <a href="#">Services</a>
-  <a href="contact.php">Contact</a>
-</div>
-    <div class="card text-center m-5">
-        <div class="card-header">
-            <h2 class="text-center">Daily Minimum Temperatures</h2>
-        </div>
-        <canvas id="myChart" width="800" height="300"></canvas>
-    </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
