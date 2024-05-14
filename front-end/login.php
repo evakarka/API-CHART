@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         .field input[type="submit"] {
             width: 100%;
-            padding: 10px;
+            padding: 4px 10px; 
             font-size: 18px;
             border: none;
             border-radius: 5px;
@@ -104,6 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
 
         .field input[type="submit"]:hover {
