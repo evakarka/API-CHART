@@ -42,34 +42,364 @@ if (isset($_SESSION["user_id"])) {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
 <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #0d0d2b, #000000);
+  color: white;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0C0C27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4081;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e00070;
+}
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  margin: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  align-items: center;
+  transition: background 0.3s, color 0.1s, top 0.3s, left 0.3s, right 0.3s, padding 0.3s, margin 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+}
+
+.navbar.sticky {
+  background: #0C0C27;
+  color: #ff4081;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #0C0C27;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #ff4081;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #e00070;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 36px;
+}
+
+.container {
+  height: 100vh;
+  text-align: center;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.container:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.253);
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #ff4081, #e00070);
+  padding: 1em 2em;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #e00070, #ff4081);
+  box-shadow: 0 0 25px rgba(255, 64, 129, 0.7);
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 5px 1px white;
+  animation: float 10s infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(calc(-50vw + 100%));
+    opacity: 0;
+  }
+}
+
+.star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: white;
+  opacity: 0.8;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.feature-item {
+  max-width: 300px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.logos img {
+  max-width: 100px;
+  margin: 20px;
+}
+
+.slider {
+  width: 80%;
+  max-width: 800px;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.slider img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.slider-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.slider-button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #0C0C27;
+  color: #ff4081;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.footer a {
+  color: #ff4081;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  color: #e00070;
+}
+
+@media (min-width: 768px) {
+  .features {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    margin: 0;
+  }
+
+  .navbar.sticky {
+    padding: 10px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .cta-button {
+    padding: 0.8em 1.5em;
+  }
+}
 
 .boxtitle {
     background-color: #f8f9fa;
-    padding: 120px 50px;
-    border: 1px solid #fff;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+    max-width: 500px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
+    max-height: 400px;
+    margin: 190px auto; /* Κεντράρει το κουτί οριζόντια */
+}
 
-    .boxtitle h2 {
-        font-weight: bold;
-        color: #333;
-    }
+.boxtitle h2 {
+    font-weight: bold;
+    color: #fff;
+}
 
-    .boxtitle hr {
-        border: none;
-        background-color: #7c4dff;
-    }
+.boxtitle hr {
+    border: none;
+    background-color: #fff;
+}
 
-    .boxtitle ul li {
-        margin-bottom: 10px;
-        color: #666;
-    }
-
-    .boxtitle ul li i {
-        color: #570ebd;
-    }
-
+.boxtitle ul p {
+    margin-bottom: 10px;
+    color: #fff;
+}
   
 .container{
     display: flex;
@@ -111,6 +441,15 @@ if (isset($_SESSION["user_id"])) {
     border: 1px solid #ccc;
     outline: none;
 }
+.box {
+    max-width: 300px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
+    margin: 20px auto; /* Κεντράρει το κουτί οριζόντια */
+    padding: 15px; /* Προσθέτει εσωτερικό padding στο κουτί */
+    border-radius: 10px; /* Προσθέτει κυρτότητα στις γωνίες του κουτιού */
+    background-color: #f8f9fa; /* Χρώμα φόντου του κουτιού */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Προσθέτει σκιά στο κουτί */
+}
+
 .btn{
   height: 35px;
     background: rgba(76, 68, 128, 0.808);
@@ -148,200 +487,53 @@ if (isset($_SESSION["user_id"])) {
 </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">DailyNewsChart</a>
-          <!-- Toggle Btn -->
-          <button class="navbar-toggler shadow-none border-0" 
-          type="button" 
-          data-bs-toggle="offcanvas" 
-          data-bs-target="#offcanvasNavbar" 
-          aria-controls="offcanvasNavbar" 
-          aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- SideBar -->
-          <div class="sidebar offcanvas offcanvas-start" 
-            tabindex="-1" 
-            id="offcanvasNavbar" 
-            aria-labelledby="offcanvasNavbarLabel">
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#">Home</a>
+    <a href="about.php">About</a>
+    <a href="#">Services</a>
+    <a href="contact.php">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
 
-            <!-- SideBar Header -->
-            <div class="offcanvas-header text-white border-bottom">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: #002144; font-weight: bold; font-size: 1.2em;">DAILYNEWSCHART</h5>
-              <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <!-- SideBar Body -->
-            <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
-              <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="index.php" style="color: #002144; font-weight: bold;">Home</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#" style="color: #002144; font-weight: bold;">About</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="contact.php" style="color: #002144; font-weight: bold;">Contact</a>
-                </li>
-              </ul>
-              <!-- Login / Sign up -->
-              <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                
-                <?php if (isset($user)): ?>
-                  <p><a class="btn btn-outline-primary btn-sm" href="logout.php">Logout</a></p>
-                  
-                <?php else: ?>
-                  
-                <p><a href="loginform.html" class="text-white text-decoration-none px-3 py-1 rounded-4"
-                style="background-color: #fff">Login</a> <a href="signup.html" 
-                class="text-white text-decoration-none px-3 py-1 rounded-4"
-                style="background-color: #f94ca4">Sign Up</a>
-                <?php endif; ?>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+  <a href="#">Home</a>
+  <a href="about.php">About</a>
+  <a href="#">Services</a>
+  <a href="contact.php">Contact</a>
+</div>
 
       <div class="container boxtitle">
-    <div class="row justify-content-center mt-5">
-        <div class="col-lg-10">
-        <h2 class="text-center mb-4">Contact</h2>
-            <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
-            <ul class="list-unstyled text-center mb-4">
-                <p>This application is developed for academic assessment.</p>
-                <p>Email: 100675745@unimail.derby.ac.uk</p>
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+            <h2 class="text-center mb-4">Contact</h2>
+                <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
+                <ul class="list-unstyled text-center mb-4">
+                    <p>This application is developed for academic assessment.</p>
+                    <p>Email: 100675745@unimail.derby.ac.uk</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-
-
-    <!-- website footer -->
-    <footer class="custom-footer text-center text-lg-start text-white" style="background-color: #002144">
-        <!-- Section: Social media -->
-        <section class="d-flex justify-content-between p-4" style="background-color: #6351ce">
-            <!-- Left -->
-            <div class="me-5">
-                <span>Get connected with us on social networks:</span>
-            </div>
-            <!-- Left -->
-
-            <!-- Right -->
-            <div>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" class="text-white me-4">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
-
-        <!-- Section: Links  -->
-        <section class="custom-section">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold">DailyNewsChart</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #7c4dff; height: 2px" />
-                        <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                            amet, consectetur adipisicing elit.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold">Aid</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #7c4dff; height: 2px" />
-                        <p>
-                            <a href="#!" class="text-white">Privacy Setting</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Connection</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Cookies policy</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Privacy Policy</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold">Useful links</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #7c4dff; height: 2px" />
-                        <p>
-                            <a href="#!" class="text-white">Terms of Service</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Company details</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Comany</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Help</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold">Contact</h6>
-                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px; background-color: #7c4dff; height: 2px" />
-                        <p><i class="fas fa-home mr-3"></i> Athens, 10679, GR</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 30 690 000 00</p>
-                        <p><i class="fas fa-print mr-3"></i> + 30 210 000 00</p>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">DailyNewsChart.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-
-        
+    <div class="footer">
+  <p>&copy; 2024 DailyNewsChart. All rights reserved.</p>
+  <p>
+    <a href="#">Privacy Policy</a> | 
+    <a href="#">Terms of Service</a> | 
+    <a href="contact.php">Contact Us</a>
+  </p>
+</div>  
         
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
