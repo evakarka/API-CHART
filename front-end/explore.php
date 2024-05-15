@@ -38,7 +38,8 @@ $conn->close();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chart Data</title>
+  <title>Explore data Data</title>
+  <link rel="stylesheet" href="style/styles.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -82,8 +83,34 @@ $conn->close();
       background-color: #f30053;
     }
   </style>
+    
 </head>
 <body>
+<div class="navbar" id="navbar">
+  <div class="logo">
+    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.php">Home</a>
+    <a href="about.php">About</a>
+    <a href="service.php">Services</a>
+    <a href="contact.php">Contact</a>
+    <a href="upload.html">Add Chart</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+  <a href="index.php">Home</a>
+  <a href="about.php">About</a>
+  <a href="service.php">Services</a>
+  <a href="contact.php">Contact</a>
+</div>
     
 </body>
 </html>

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 session_start();
                 session_regenerate_id();
                 $_SESSION["user_id"] = $user["id"];
-                header("Location: chart.php");
+                header("Location: explore.php");
                 exit;
             }
         }
