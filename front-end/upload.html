@@ -113,7 +113,7 @@
     var xAxisData = values.map(function(row) { return row[0]; });
 
     var seriesData = [];
-    var colors = ['#5470C6', '#EE6666', '#93C736', '#FF8C00']; // Ορίζετε εδώ τα χρώματα που θέλετε να χρησιμοποιήσετε
+    var colors = ['#5470C6', '#EE6666', '#93C736', '#FF8C00']; 
 
     // Ανάθεση χρωμάτων σε κάθε δεδομένο
     for (var i = 1; i < headers.length; i++) {
@@ -124,7 +124,7 @@
         name: headers[i],
         type: chartType,
         data: data,
-        color: colors[i % colors.length] // Επιλογή χρώματος ανάλογα με τη θέση της σειράς δεδομένων
+        color: colors[i % colors.length] 
       };
       seriesData.push(series);
     }
@@ -132,21 +132,20 @@
     var chartDom = document.getElementById('chart-container');
     var chart = echarts.init(chartDom);
     
-    // Δημιουργία της λεζάντας για τα χρώματα
     var legendData = headers.slice(1).map(function(name, index) {
       return {
         name: name,
-        icon: 'circle', // Μπορείτε να αλλάξετε το εικονίδιο εδώ ανάλογα με το τύπο του γραφήματος
+        icon: 'circle', 
         textStyle: {
           color: colors[index % colors.length]
         }
       };
     });
 
-    // Προσθήκη της λεζάντας στις επιλογές του γραφήματος
+
 var option = {
   legend: {
-    bottom: 0, // Τοποθετούμε τη λεζάντα στο κάτω μέρος του γραφήματος
+    bottom: 0, 
     data: legendData,
     textStyle: {
       color: '#333'
@@ -165,11 +164,9 @@ var option = {
 
 chart.setOption(option);
 
-
-    // Εμφάνιση της φόρμας για το ανέβασμα του γραφήματος μετά το πάτημα του πλήκτρου "Preview"
 document.getElementById('upload-form').style.display = 'block';
 
-// Σώσε τα δεδομένα της σειράς (seriesData) για μετέπειτα χρήση
+
 window.chartData = JSON.stringify(seriesData);
 };
 
@@ -179,19 +176,17 @@ reader.readAsText(file);
 document.getElementById('upload-form').addEventListener('submit', function(event) {
 event.preventDefault();
 
-// Εμφάνιση alert
 var confirmUpload = confirm("Are you sure you want to upload the chart?");
 
-// Αν ο χρήστης πατήσει "OK", τότε στείλτε τα δεδομένα στον server
 if (confirmUpload) {
-// Συλλογή δεδομένων για αποστολή στον server
+// Send server
 var formData = new FormData();
 formData.append('chart-name', document.getElementById('chart-name').value);
 formData.append('chart-description', document.getElementById('chart-description').value);
 formData.append('chart-type', document.getElementById('chart-type').value);
 formData.append('chart-data', window.chartData);
 
-// Δημιουργία αιτήματος AJAX
+// AJAX
 var xhr = new XMLHttpRequest();
 xhr.open("POST", "upload_chart.php", true);
 xhr.onreadystatechange = function() {

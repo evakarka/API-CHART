@@ -82,16 +82,13 @@ if ($mysqli->affected_rows) {
             <header>Reset Password</header>
 
             <form method="post" action="send-password.php">
-                <!-- Πεδίο εισαγωγής email -->
                 <div class="field input">
                     <label for="email">Your email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
-                <!-- Κρυφό πεδίο για το reset token -->
                 <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
 
-                <!-- Πεδία εισαγωγής νέου κωδικού και επιβεβαίωσης κωδικού -->
                 <div class="field input">
                     <label for="password">New password</label>
                     <input type="password" id="password" name="password">
@@ -102,7 +99,6 @@ if ($mysqli->affected_rows) {
                     <input type="password" id="password_confirmation" name="password_confirmation">
                 </div>
 
-                <!-- Κουμπί υποβολής -->
                 <div class="field">
                     <input type="submit" class="btn" name="submit" value="Reset Password">
                 </div>

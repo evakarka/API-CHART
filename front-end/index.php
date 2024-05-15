@@ -150,7 +150,6 @@ for (let i = 0; i < 300; i++) {
   starBackground.appendChild(star);
 }
 
-// Slider functionality
 const slides = document.querySelector('.slides');
 const slide = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
@@ -172,7 +171,6 @@ function showSlide(n) {
 prevBtn.addEventListener('click', () => showSlide(-1));
 nextBtn.addEventListener('click', () => showSlide(1));
 
-// Hamburger menu functionality
 const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
 const closebtn = document.getElementById("closebtn");

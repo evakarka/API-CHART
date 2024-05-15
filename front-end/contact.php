@@ -71,7 +71,7 @@ if (isset($_SESSION["user_id"])) {
 
 <div class="container boxtitle">
   <div class="row justify-content-center mt-5">
-      <div class="col-lg-10"> <!-- Αυξήστε τον αριθμό των κολόνων για να καθορίσετε το μήκος -->
+      <div class="col-lg-10"> 
           <h2 class="text-center mb-4">Contact</h2>
           <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
           <ul class="list-unstyled text-center mb-4">

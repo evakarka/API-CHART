@@ -29,7 +29,6 @@ if (isset($_SESSION["user_id"])) {
         color: white;
         }
 
-        /* Custom scrollbar styling */
         ::-webkit-scrollbar {
         width: 6px;
         }

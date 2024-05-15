@@ -69,16 +69,14 @@ $mail->SMTPAuth = true;
 $mail->Host = "smtp.gmail.com";
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
-$mail->Username = "codiv19journo@gmail.com"; // Λογαριασμός χρήστη
-$mail->Password = "hvdqkxboqxbezcbb"; // Κωδικός πρόσβασης
+$mail->Username = "codiv19journo@gmail.com";
+$mail->Password = "hvdqkxboqxbezcbb"; 
 
 $mail->isHtml(true);
 
-// Ορισμός αποστολέα και προσθήκη διεύθυνσης παραλήπτη
 $mail->setFrom("codiv19journo@gmail.com");
 $mail->addAddress($user["email"]);
 
-// Θέμα και κείμενο του μηνύματος
 $mail->Subject = "Password Reset";
 $mail->Body = <<<END
 Click <a href="http://localhost/API-CHART/front-end/reset-password.php?token=$token">here</a> 
@@ -86,11 +84,9 @@ to reset your password.
 END;
 
 try {
-    // Αποστολή του email
     $mail->send();
     header("Location: password-reset-success.html");
 } catch (Exception $e) {
-    // Εκτύπωση σφάλματος σε περίπτωση που αποτύχει η αποστολή
     echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
 }
 

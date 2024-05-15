@@ -1,5 +1,4 @@
 <?php
-// Σύνδεση στη βάση δεδομένων
 $host = "localhost";
 $dbname = "chart_data";
 $username = "root";
@@ -7,25 +6,21 @@ $password = "";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Έλεγχος σύνδεσης
 if ($conn->connect_error) {
     die("Σύνδεση απέτυχε: " . $conn->connect_error);
 }
 
-// Ερώτημα για επιλογή δεδομένων από τον πίνακα 'charts'
 $sql = "SELECT * FROM charts";
 $result = $conn->query($sql);
 
-// Έλεγχος αν υπάρχουν εγγραφές στον πίνακα
 if ($result->num_rows > 0) {
-    // Εμφάνιση κάθε εγγραφής σε ένα card
     while($row = $result->fetch_assoc()) {
         echo "<div class='card'>";
         echo "<div class='card-body'>";
         echo "<h2 class='card-title'>" . $row["chart_name"] . "</h2>";
         echo "<p class='card-text'>" . $row["chart_description"] . "</p>";
         echo "<p class='card-text'>" . $row["chart_type"] . "</p>";
-        // Εδώ μπορείτε να προσθέσετε τον κώδικα για την εμφάνιση των δεδομένων του γραφήματος
+
         echo "<a href='chart.php?file_id=" . $row["file_id"] . "' class='btn'>See</a>";
         echo "</div>";
         echo "</div>";

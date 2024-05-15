@@ -30,7 +30,6 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require __DIR__ . "/database.php";
 
-// Check if the email address already exists in the database
 $email = $_POST['email'];
 $check_existing_email_sql = "SELECT COUNT(*) as count FROM users WHERE email = ?";
 $stmt = $mysqli->prepare($check_existing_email_sql);
@@ -44,7 +43,6 @@ if ($email_count > 0) {
     die("Email address already exists.");
 }
 
-// Prepare SQL statement for inserting user data
 $sql = "INSERT INTO users (name, email, password_hash)
         VALUES (?, ?, ?)";
 
