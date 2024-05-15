@@ -489,12 +489,12 @@ p {
 <body>
 <div class="navbar" id="navbar">
   <div class="logo">
-    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
+    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
   </div>
   <div class="nav-links" id="navLinks">
-    <a href="#">Home</a>
+    <a href="index.php">Home</a>
     <a href="about.php">About</a>
-    <a href="#">Services</a>
+    <a href="service.php">Services</a>
     <a href="contact.php">Contact</a>
   </div>
   <div class="hamburger" id="hamburger">
@@ -506,9 +506,9 @@ p {
 
 <div id="sidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
-  <a href="#">Home</a>
+  <a href="index.php">Home</a>
   <a href="about.php">About</a>
-  <a href="#">Services</a>
+  <a href="service.php">Services</a>
   <a href="contact.php">Contact</a>
 </div>
 
@@ -520,7 +520,7 @@ p {
           <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
           <ul class="list-unstyled text-center mb-4">
               <li><i class="fas fa-home mr-2"></i> Athens, 10679, GR</li>
-              <li><i class="fas fa-envelope mr-2"></i> info@example.com</li>
+              <li><i class="fas fa-envelope mr-2"></i> 100675745@unimail.derby.ac.uk</li>
               <li><i class="fas fa-phone mr-2"></i> +30 690 000 00</li>
               <li><i class="fas fa-print mr-2"></i> +30 210 000 00</li>
           </ul>

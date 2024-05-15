@@ -489,12 +489,12 @@ p {
 <body>
 <div class="navbar" id="navbar">
   <div class="logo">
-    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
+    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
   </div>
   <div class="nav-links" id="navLinks">
-    <a href="#">Home</a>
+    <a href="index.php">Home</a>
     <a href="about.php">About</a>
-    <a href="#">Services</a>
+    <a href="service.php">Services</a>
     <a href="contact.php">Contact</a>
   </div>
   <div class="hamburger" id="hamburger">
@@ -507,19 +507,18 @@ p {
 <div id="sidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
   <a href="index.php">Home</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
+  <a href="about.php">About</a>
+  <a href="service.php">Services</a>
   <a href="contact.php">Contact</a>
 </div>
 
       <div class="container boxtitle">
         <div class="row justify-content-center mt-5">
             <div class="col-lg-10">
-            <h2 class="text-center mb-4">Contact</h2>
+            <h2 class="text-center mb-4">About</h2>
                 <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
                 <ul class="list-unstyled text-center mb-4">
-                    <p class="fs-5">This application is developed for academic assessment.</p>
-                    <p class="fs-5">Email: 100675745@unimail.derby.ac.uk</p>
+                    <p class="fs-5">This application was created to allow users to explore general everyday topics with charts, as well as to create their own charts using a .csv file.</p>
                 </div>
             </div>
         </div>

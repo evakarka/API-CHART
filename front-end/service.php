@@ -17,11 +17,30 @@ if (isset($_SESSION["user_id"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Landing Page</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyNewsChart - About</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 <style>
 body, html {
   margin: 0;
@@ -356,12 +375,121 @@ p {
     padding: 0.8em 1.5em;
   }
 }
+
+.boxtitle {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
+    max-height: 400px;
+    margin: 200px auto; /* Κεντράρει το κουτί οριζόντια */
+}
+
+.boxtitle h2 {
+    font-weight: bold;
+    color: #fff;
+}
+
+.boxtitle hr {
+    border: none;
+    background-color: #fff;
+}
+
+.boxtitle ul p {
+    margin-bottom: 10px;
+    color: #fff;
+}
+  
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+.box{
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+                0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+.form-box{
+    width: 450px;
+    margin: 0px 10px;
+}
+.form-box header{
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+}
+.form-box form .field{
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+.form-box form .input input{
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.box {
+    max-width: 300px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
+    margin: 20px auto; /* Κεντράρει το κουτί οριζόντια */
+    padding: 15px; /* Προσθέτει εσωτερικό padding στο κουτί */
+    border-radius: 10px; /* Προσθέτει κυρτότητα στις γωνίες του κουτιού */
+    background-color: #f8f9fa; /* Χρώμα φόντου του κουτιού */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Προσθέτει σκιά στο κουτί */
+}
+
+.btn{
+  height: 35px;
+    background: rgba(76, 68, 128, 0.808);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 10px;
+    cursor: pointer;
+    transition: all .3s;
+    margin-top: 10px;
+    padding: 0px 10px;
+    text-align: center; /* Ευθυγράμμιση του κειμένου στο κέντρο */
+    line-height: 35px; /* Κεντράρισμα του κειμένου κάθετα μέσα στο κουμπί */
+    
+}
+.btn:hover{
+    opacity: 0.82;
+}
+.sumbit{
+    width: 100%;
+}
+.link{
+    margin-bottom: 15px;
+}
+.btn-outline-primary {
+    border: 1px solid rgb(119, 44, 229); /* Μωβ περίγραμμα */
+    box-shadow: 0 0 10px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+    /* rgb(186, 253, 211) */
+}
+.btn-sm {
+    box-shadow: 0 0 6px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+}
+
 </style>
 </head>
 <body>
 <div class="navbar" id="navbar">
   <div class="logo">
-    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
+    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
   </div>
   <div class="nav-links" id="navLinks">
     <a href="index.php">Home</a>
@@ -378,134 +506,55 @@ p {
 
 <div id="sidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
-  <a href="#">Home</a>
+  <a href="index.php">Home</a>
   <a href="about.php">About</a>
-  <a href="#">Services</a>
+  <a href="service.php">Services</a>
   <a href="contact.php">Contact</a>
 </div>
 
-<div class="container">
-  <h1>Welcome to DailyNewsChart</h1>
-  <p>Analyze News with Chart.</p>
-  <a href="signup.html" class="cta-button">Sign Up</a>
-</div>
-<div class="container">
-  <h1>Features</h1>
-  <div class="features">
-    <div class="feature-item">
-      <h2>Easy Data Import</h2>
-      <p>Importing .csv files to create charts is a straightforward process that enhances data visualization capabilities.</p>
+      <div class="container boxtitle">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+            <h2 class="text-center mb-4">Service</h2>
+                <hr class="mb-4 mt-0 mx-auto" style="width: 220px; background-color: #7c4dff; height: 2px">
+                <ul class="list-unstyled text-center mb-4">
+                    <p class="fs-5">This application is developed for academic assessment.</p>
+                    <p class="fs-5">Email: 100675745@unimail.derby.ac.uk</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="feature-item">
-      <h2>Variety of Chart Types</h2>
-      <p>Offer a variety of chart types for users to choose from, such as line charts, bar charts, pie charts, etc.</p>
-    </div>
-    <div class="feature-item">
-      <h2>Professional Data Analysis</h2>
-      <p>Use datasets to manage and analyze data, allowing for filtering, clustering, and other transformations.</p>
-    </div>
-  </div>
-  <div class="logos">
-    <img src="https://via.placeholder.com/100" alt="Logo 1">
-    <img src="https://via.placeholder.com/100" alt="Logo 2">
-    <img src="https://via.placeholder.com/100" alt="Logo 3">
-    <img src="https://via.placeholder.com/100" alt="Logo 4">
-  </div>
-</div>
-<div class="container">
-  <h1>Image Slider</h1>
-  <div class="slider">
-    <div class="slides">
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 1"></div>
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 2"></div>
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 3"></div>
-    </div>
-    <div class="slider-buttons">
-      <button class="slider-button" id="prevBtn">&#10094;</button>
-      <button class="slider-button" id="nextBtn">&#10095;</button>
-    </div>
-  </div>
-</div>
-<div class="particles"></div>
-<div class="star-background"></div>
 
-<div class="footer">
-  <p>&copy; 2024 DailyNewsChart. All rights reserved.</p>
-  <p>
+
+    <div class="footer">
+  <p class="fs-5">&copy; 2024 DailyNewsChart. All rights reserved.</p>
+  <p class="fs-5">
     <a href="#">Privacy Policy</a> | 
     <a href="#">Terms of Service</a> | 
     <a href="contact.php">Contact Us</a>
   </p>
-</div>
+</div>  
+        
 
 <script>
-window.onscroll = function() {stickNavbar()};
+document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('hamburger');
+    var sidebar = document.getElementById('sidebar');
+    var closebtn = document.getElementById('closebtn');
 
-const navbar = document.getElementById("navbar");
-const sticky = navbar.offsetTop;
+    hamburger.addEventListener('click', function() {
+        sidebar.style.width = '250px';  // Ανοίγει το sidebar
+    });
 
-function stickNavbar() {
-  if (window.pageYOffset > sticky) {
-    navbar.classList.add("sticky");
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-
-const particleContainer = document.querySelector('.particles');
-const starBackground = document.querySelector('.star-background');
-
-for (let i = 0; i < 100; i++) {
-  const particle = document.createElement('div');
-  particle.classList.add('particle');
-  particle.style.top = `${Math.random() * 100}vh`;
-  particle.style.left = `${Math.random() * 100}vw`;
-  particle.style.animationDelay = `${Math.random() * 10}s`;
-  particleContainer.appendChild(particle);
-}
-
-for (let i = 0; i < 300; i++) {
-  const star = document.createElement('div');
-  star.classList.add('star');
-  star.style.top = `${Math.random() * 100}vh`;
-  star.style.left = `${Math.random() * 100}vw`;
-  starBackground.appendChild(star);
-}
-
-// Slider functionality
-const slides = document.querySelector('.slides');
-const slide = document.querySelectorAll('.slide');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-let index = 0;
-
-function showSlide(n) {
-  index += n;
-  if (index >= slide.length) {
-    index = 0;
-  }
-  if (index < 0) {
-    index = slide.length - 1;
-  }
-  slides.style.transform = 'translateX(' + (-index * 100) + '%)';
-}
-
-prevBtn.addEventListener('click', () => showSlide(-1));
-nextBtn.addEventListener('click', () => showSlide(1));
-
-// Hamburger menu functionality
-const hamburger = document.getElementById("hamburger");
-const sidebar = document.getElementById("sidebar");
-const closebtn = document.getElementById("closebtn");
-
-hamburger.addEventListener("click", () => {
-  sidebar.style.width = "250px";
-});
-
-closebtn.addEventListener("click", () => {
-  sidebar.style.width = "0";
+    closebtn.addEventListener('click', function() {
+        sidebar.style.width = '0';  // Κλείνει το sidebar
+    });
 });
 </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 </html>

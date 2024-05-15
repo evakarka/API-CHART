@@ -357,12 +357,12 @@ if (isset($_SESSION["user_id"])) {
 <body>
 <div class="navbar" id="navbar">
   <div class="logo">
-    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
+    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
   </div>
   <div class="nav-links" id="navLinks">
-    <a href="#">Home</a>
+    <a href="index.php">Home</a>
     <a href="about.php">About</a>
-    <a href="#">Services</a>
+    <a href="service.php">Services</a>
     <a href="contact.php">Contact</a>
   </div>
   <div class="hamburger" id="hamburger">
@@ -372,22 +372,12 @@ if (isset($_SESSION["user_id"])) {
   </div>
 </div>
 
-<br>
-<div class="navbar" id="navbar">
-  <div class="logo">
-    <a href="#" style="font-size: 20px;">DailyNewsChart</a>
-  </div>
-  <div class="nav-links" id="navLinks">
-    <a href="#">Home</a>
-    <a href="about.php">About</a>
-    <a href="#">Services</a>
-    <a href="contact.php">Contact</a>
-  </div>
-  <div class="hamburger" id="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+  <a href="index.php">Home</a>
+  <a href="about.php">About</a>
+  <a href="service.php">Services</a>
+  <a href="contact.php">Contact</a>
 </div>
 
 <div id="sidebar" class="sidebar">
