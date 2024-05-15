@@ -49,7 +49,7 @@ body, html {
   min-height: 100%;
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom, #0d0d2b, #000000);
+  background-color: #0d0d2b;
   color: white;
 }
 
