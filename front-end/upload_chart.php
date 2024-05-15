@@ -22,11 +22,15 @@ if (empty($chartName) || empty($chartDescription) || empty($chartType) || empty(
 }
 
 // Προετοιμασία της δήλωσης
-$stmt = $mysqli->prepare("INSERT INTO charts (chart_name, chart_description, chart_type, chart_data) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $chartName, $chartDescription, $chartType, $chartData);
+$stmt = $mysqli->prepare("INSERT INTO charts (chart_name, chart_description, chart_type, chart_data, file_id) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssi", $chartName, $chartDescription, $chartType, $chartData, $fileId);
 
+// Λήψη του file_id από τον πίνακα charts
+$fileId = 1; // Εδώ θα πρέπει να το λάβετε από τη βάση δεδομένων ή να το παράγετε δυναμικά
+
+// Εκτέλεση της δήλωσης
 if ($stmt->execute()) {
-    echo "New record created successfully";
+    echo "New record created successfully. Your chart has been uploaded.";
 } else {
     echo "Error: " . $stmt->error;
 }

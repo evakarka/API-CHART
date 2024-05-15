@@ -52,6 +52,7 @@ if (isset($_SESSION["user_id"])) {
   <a href="contact.php">Contact</a>
 </div>
 
+<br>
 
     <div class="card text-center m-5">
         <div class="card-header">

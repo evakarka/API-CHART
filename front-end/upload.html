@@ -93,93 +93,116 @@
   <script src="https://cdn.jsdelivr.net/npm/echarts@5"></script>
   <script>
     document.getElementById('csv-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      var fileInput = document.getElementById('csv-upload');
-      var file = fileInput.files[0];
-      var reader = new FileReader();
-      var chartType = document.getElementById('chart-type').value;
-      var chartName = document.getElementById('chart-name').value;
-      var chartDescription = document.getElementById('chart-description').value;
+  event.preventDefault();
+  var fileInput = document.getElementById('csv-upload');
+  var file = fileInput.files[0];
+  var reader = new FileReader();
+  var chartType = document.getElementById('chart-type').value;
+  var chartName = document.getElementById('chart-name').value;
+  var chartDescription = document.getElementById('chart-description').value;
 
-      reader.onload = function(event) {
-        var csv = event.target.result;
-        var data = csv.split('\n').map(function(row) {
-          return row.split(',');
-        });
+  reader.onload = function(event) {
+    var csv = event.target.result;
+    var data = csv.split('\n').map(function(row) {
+      return row.split(',');
+    });
 
-        var headers = data[0];
-        var values = data.slice(1);
+    var headers = data[0];
+    var values = data.slice(1);
 
-        var xAxisData = values.map(function(row) { return row[0]; });
-        var seriesData = [];
-        for (var i = 1; i < headers.length; i++) {
-          var series = {
-            name: headers[i],
-            type: chartType,
-            data: values.map(function(row) { return parseFloat(row[i]); })
-          };
-          seriesData.push(series);
-        }
+    var xAxisData = values.map(function(row) { return row[0]; });
 
-        var chartDom = document.getElementById('chart-container');
-        var chart = echarts.init(chartDom);
-        var option = {
-          title: {
-            text: chartName,
-            subtext: chartDescription,
-            left: 'center',
-            textStyle: {
-              color: '#FF4081'
-            }
-          },
-          xAxis: {
-            type: 'category',
-            data: xAxisData
-          },
-          yAxis: {
-            type: 'value',
-            name: 'Values'
-          },
-          series: seriesData
-        };
-        chart.setOption(option);
+    var seriesData = [];
+    var colors = ['#5470C6', '#EE6666', '#93C736', '#FF8C00']; // Ορίζετε εδώ τα χρώματα που θέλετε να χρησιμοποιήσετε
 
-        // Εμφάνιση της φόρμας για το ανέβασμα του γραφήματος μετά το πάτημα του πλήκτρου "Preview"
-        document.getElementById('upload-form').style.display = 'block';
-
-        // Σώσε τα δεδομένα της σειράς (seriesData) για μετέπειτα χρήση
-        window.chartData = JSON.stringify(seriesData);
+    // Ανάθεση χρωμάτων σε κάθε δεδομένο
+    for (var i = 1; i < headers.length; i++) {
+      var data = values.map(function(row) {
+        return { value: parseFloat(row[i]), name: row[0] };
+      });
+      var series = {
+        name: headers[i],
+        type: chartType,
+        data: data,
+        color: colors[i % colors.length] // Επιλογή χρώματος ανάλογα με τη θέση της σειράς δεδομένων
       };
+      seriesData.push(series);
+    }
 
-      reader.readAsText(file);
+    var chartDom = document.getElementById('chart-container');
+    var chart = echarts.init(chartDom);
+    
+    // Δημιουργία της λεζάντας για τα χρώματα
+    var legendData = headers.slice(1).map(function(name, index) {
+      return {
+        name: name,
+        icon: 'circle', // Μπορείτε να αλλάξετε το εικονίδιο εδώ ανάλογα με το τύπο του γραφήματος
+        textStyle: {
+          color: colors[index % colors.length]
+        }
+      };
     });
 
-    document.getElementById('upload-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Εμφάνιση alert
-      var confirmUpload = confirm("Are you sure you want to upload the chart?");
+    // Προσθήκη της λεζάντας στις επιλογές του γραφήματος
+var option = {
+  legend: {
+    bottom: 0, // Τοποθετούμε τη λεζάντα στο κάτω μέρος του γραφήματος
+    data: legendData,
+    textStyle: {
+      color: '#333'
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: xAxisData
+  },
+  yAxis: {
+    type: 'value',
+    name: 'Values'
+  },
+  series: seriesData
+};
 
-      // Αν ο χρήστης πατήσει "OK", τότε στείλτε τα δεδομένα στον server
-      if (confirmUpload) {
-        // Συλλογή δεδομένων για αποστολή στον server
-        var formData = new FormData();
-        formData.append('chart-name', document.getElementById('chart-name').value);
-        formData.append('chart-description', document.getElementById('chart-description').value);
-        formData.append('chart-type', document.getElementById('chart-type').value);
-        formData.append('chart-data', window.chartData);
+chart.setOption(option);
 
-        // Δημιουργία αιτήματος AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "upload_chart.php", true);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText);
-          }
-        };
-        xhr.send(formData);
-      }
-    });
+
+    // Εμφάνιση της φόρμας για το ανέβασμα του γραφήματος μετά το πάτημα του πλήκτρου "Preview"
+document.getElementById('upload-form').style.display = 'block';
+
+// Σώσε τα δεδομένα της σειράς (seriesData) για μετέπειτα χρήση
+window.chartData = JSON.stringify(seriesData);
+};
+
+reader.readAsText(file);
+});
+
+document.getElementById('upload-form').addEventListener('submit', function(event) {
+event.preventDefault();
+
+// Εμφάνιση alert
+var confirmUpload = confirm("Are you sure you want to upload the chart?");
+
+// Αν ο χρήστης πατήσει "OK", τότε στείλτε τα δεδομένα στον server
+if (confirmUpload) {
+// Συλλογή δεδομένων για αποστολή στον server
+var formData = new FormData();
+formData.append('chart-name', document.getElementById('chart-name').value);
+formData.append('chart-description', document.getElementById('chart-description').value);
+formData.append('chart-type', document.getElementById('chart-type').value);
+formData.append('chart-data', window.chartData);
+
+// Δημιουργία αιτήματος AJAX
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "upload_chart.php", true);
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    alert(xhr.responseText);
+  }
+};
+xhr.send(formData);
+}
+});
+
   </script>
 </body>
 </html>
