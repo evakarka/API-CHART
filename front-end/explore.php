@@ -13,32 +13,13 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM charts";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<div class='card'>";
-        echo "<div class='card-body'>";
-        echo "<h2 class='card-title'>" . $row["chart_name"] . "</h2>";
-        echo "<p class='card-text'>" . $row["chart_description"] . "</p>";
-        echo "<p class='card-text'>" . $row["chart_type"] . "</p>";
-
-        echo "<a href='chart.php?file_id=" . $row["file_id"] . "' class='btn'>See</a>";
-        echo "</div>";
-        echo "</div>";
-    }
-} else {
-    echo "No results found";
-}
-$conn->close();
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore data Data</title>
+  <title>Explore Data</title>
   <link rel="stylesheet" href="style/styles.css">
   <style>
     body {
@@ -50,6 +31,7 @@ $conn->close();
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       min-height: 100vh;
     }
     .card {
@@ -83,7 +65,6 @@ $conn->close();
       background-color: #f30053;
     }
   </style>
-    
 </head>
 <body>
 <div class="navbar" id="navbar">
@@ -111,6 +92,25 @@ $conn->close();
   <a href="service.php">Services</a>
   <a href="contact.php">Contact</a>
 </div>
-    
+
+<div id="chart-cards">
+<?php
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<div class='card'>";
+        echo "<div class='card-body'>";
+        echo "<h2 class='card-title'>" . $row["chart_name"] . "</h2>";
+        echo "<p class='card-text'>" . $row["chart_description"] . "</p>";
+        echo "<p class='card-text'>" . $row["chart_type"] . "</p>";
+        echo "<a href='chart.php?id=" . $row["id"] . "' class='btn'>See</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+} else {
+    echo "No results found";
+}
+$conn->close();
+?>
+</div>
 </body>
 </html>

@@ -19,12 +19,8 @@ if (empty($chartName) || empty($chartDescription) || empty($chartType) || empty(
     die("All fields are required.");
 }
 
-$stmt = $mysqli->prepare("INSERT INTO charts (chart_name, chart_description, chart_type, chart_data, file_id) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssi", $chartName, $chartDescription, $chartType, $chartData, $fileId);
-
-// file_id to charts table
-$fileId = 1; 
-
+$stmt = $mysqli->prepare("INSERT INTO charts (chart_name, chart_description, chart_type, chart_data) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $chartName, $chartDescription, $chartType, $chartData);
 
 if ($stmt->execute()) {
     echo "New record created successfully. Your chart has been uploaded.";
