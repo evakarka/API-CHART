@@ -17,9 +17,11 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 $data = array();
 if ($id > 0) {
-    // Ερώτημα SQL για να επιλέξετε τα δεδομένα του γραφήματος με βάση το ID
-    $sql = "SELECT * FROM charts WHERE id = $id";
-    $result = $conn->query($sql);
+    // Χρήση prepared statements για ασφαλή SQL ερώτημα
+    $stmt = $conn->prepare("SELECT * FROM charts WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     // Δημιουργία των δεδομένων για το γράφημα ECharts
     if ($result && $result->num_rows > 0) {
@@ -32,25 +34,66 @@ if ($id > 0) {
     } else {
         echo "No results were found for the specified ID.";
     }
-    $conn->close();
+    $stmt->close();
 } else {
     echo "Invalid ID.";
 }
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo isset($data['chart_name']) ? htmlspecialchars($data['chart_name']) : 'Map name'; ?></title>
+  <title><?php echo isset($data['chart_name']) ? htmlspecialchars($data['chart_name']) : 'Chart name'; ?></title>
   <!-- Εισαγωγή της βιβλιοθήκης ECharts -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Προσαρμογή του μεγέθους του γραφήματος */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #0D0D2B;
+      color: #fff;
+    }
     #chart-container {
-      width: 800px;
+      width: 100%;
+      max-width: 800px;
       height: 600px;
-      margin: 0 auto;
+      margin: 20px 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 0;
+      background-color: #FF4081;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #f30053;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    h1 {
+      color: #FF4081;
     }
   </style>
 </head>
@@ -64,14 +107,11 @@ if ($id > 0) {
     <?php endif; ?>
     <div id="chart-container"></div>
     <h2>CSV:</h2>
-    <pre><?php print_r($data['chart_data']); ?></pre>
-
-    <h2>CSV:</h2>
     <pre><?php echo htmlspecialchars(json_encode($data['chart_data'], JSON_PRETTY_PRINT)); ?></pre>
 
     <script>
-     // Δημιουργία του γραφήματος ECharts
-     var chartData = <?php echo json_encode($data['chart_data']); ?>;
+      // Δημιουργία του γραφήματος ECharts
+      var chartData = <?php echo json_encode($data['chart_data']); ?>;
       var chartContainer = document.getElementById('chart-container');
       var myChart = echarts.init(chartContainer);
 

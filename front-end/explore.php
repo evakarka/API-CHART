@@ -12,7 +12,6 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM charts";
 $result = $conn->query($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,33 +25,79 @@ $result = $conn->query($sql);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0d0d2b;
-      color: #fff;
+      background-color: #f3f4f6;
+      color: #333;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
+      align-items: center;
       min-height: 100vh;
     }
-    .card {
-      background-color: #1f1f44;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    .navbar {
+      width: 100%;
+      background-color: #4A5568;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+    }
+    .logo a {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 4px 0;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 80px;
       padding: 20px;
-      margin: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
       width: 300px;
-      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    h2 {
-      color: #FF4081;
-      margin-bottom: 10px;
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
-    p {
-      color: #ddd;
-      margin-bottom: 20px;
+    .card h2 {
+      color: #2B6CB0;
+      margin-bottom: 15px;
+    }
+    .card p {
+      color: #666;
+      margin-bottom: 15px;
     }
     .btn {
-      background-color: #FF4081;
+      background-color: #2B6CB0;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -60,16 +105,38 @@ $result = $conn->query($sql);
       cursor: pointer;
       font-size: 16px;
       text-decoration: none;
+      transition: background-color 0.3s ease;
     }
     .btn:hover {
-      background-color: #f30053;
+      background-color: #2C5282;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #4A5568;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        left: 0;
+        text-align: center;
+      }
+      .nav-links a {
+        margin: 10px 0;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .hamburger.active + .nav-links {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
-<div class="navbar" id="navbar">
+<div class="navbar">
   <div class="logo">
-    <a href="index.php" style="font-size: 20px;">DailyNewsChart</a>
+    <a href="index.php">DailyNewsChart</a>
   </div>
   <div class="nav-links" id="navLinks">
     <a href="index.php">Home</a>
@@ -85,25 +152,15 @@ $result = $conn->query($sql);
   </div>
 </div>
 
-<div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
-  <a href="index.php">Home</a>
-  <a href="about.php">About</a>
-  <a href="service.php">Services</a>
-  <a href="contact.php">Contact</a>
-</div>
-
-<div id="chart-cards">
+<div class="card-container">
 <?php
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<div class='card'>";
-        echo "<div class='card-body'>";
-        echo "<h2 class='card-title'>" . $row["chart_name"] . "</h2>";
-        echo "<p class='card-text'>" . $row["chart_description"] . "</p>";
-        echo "<p class='card-text'>" . $row["chart_type"] . "</p>";
+        echo "<h2>" . $row["chart_name"] . "</h2>";
+        echo "<p>" . $row["chart_description"] . "</p>";
+        echo "<p>" . $row["chart_type"] . "</p>";
         echo "<a href='chart.php?id=" . $row["id"] . "' class='btn'>See</a>";
-        echo "</div>";
         echo "</div>";
     }
 } else {
@@ -112,5 +169,12 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 </div>
+
+<script>
+  document.getElementById("hamburger").addEventListener("click", function() {
+    this.classList.toggle("active");
+    document.getElementById("navLinks").classList.toggle("active");
+  });
+</script>
 </body>
 </html>
