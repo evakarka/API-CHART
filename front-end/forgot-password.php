@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Forgot Password</title>
-    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">

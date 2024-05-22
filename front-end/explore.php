@@ -18,15 +18,16 @@ $result = $conn->query($sql);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Data</title>
+  <title>Explore Chart Data</title>
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="style/styles.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f3f4f6;
-      color: #333;
+      background-color: #0D0D2B; /* Background color */
+      color: #f3f4f6; /* Light text color for contrast */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -34,7 +35,7 @@ $result = $conn->query($sql);
     }
     .navbar {
       width: 100%;
-      background-color: #4A5568;
+      background-color: #0D0D2B; /* Background color */
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -44,7 +45,7 @@ $result = $conn->query($sql);
       z-index: 1000;
     }
     .navbar a {
-      color: #fff;
+      color: #fff; /* White color for navbar links */
       text-decoration: none;
       margin: 0 15px;
       font-size: 18px;
@@ -64,7 +65,7 @@ $result = $conn->query($sql);
     .hamburger div {
       width: 25px;
       height: 3px;
-      background-color: #fff;
+      background-color: #fff; /* White color for hamburger menu */
       margin: 4px 0;
     }
     .card-container {
@@ -77,27 +78,28 @@ $result = $conn->query($sql);
       width: 100%;
     }
     .card {
-      background-color: #fff;
+      background-color: #1f1f44; /* Slightly lighter dark color for cards */
       border-radius: 12px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 20px;
       width: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #f3f4f6; /* Light text color */
     }
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .card h2 {
-      color: #2B6CB0;
+      color: #FF4081; /* Highlight color for headings */
       margin-bottom: 15px;
     }
     .card p {
-      color: #666;
+      color: #d1d1d1; /* Light gray for paragraph text */
       margin-bottom: 15px;
     }
     .btn {
-      background-color: #2B6CB0;
+      background-color: #FF4081; /* Highlight color for buttons */
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -108,13 +110,13 @@ $result = $conn->query($sql);
       transition: background-color 0.3s ease;
     }
     .btn:hover {
-      background-color: #2C5282;
+      background-color: #D93670; /* Slightly darker shade for button hover */
     }
     @media (max-width: 768px) {
       .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #4A5568;
+        background-color: #0D0D2B; /* Background color */
         position: absolute;
         top: 60px;
         width: 100%;
@@ -131,6 +133,11 @@ $result = $conn->query($sql);
         display: flex;
       }
     }
+
+    .nav-links.active {
+      display: flex;
+    }
+
   </style>
 </head>
 <body>
@@ -171,10 +178,71 @@ $conn->close();
 </div>
 
 <script>
-  document.getElementById("hamburger").addEventListener("click", function() {
-    this.classList.toggle("active");
-    document.getElementById("navLinks").classList.toggle("active");
-  });
+window.onscroll = function() {stickNavbar()};
+
+const navbar = document.getElementById("navbar");
+const sticky = navbar.offsetTop;
+
+function stickNavbar() {
+  if (window.pageYOffset > sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+const particleContainer = document.querySelector('.particles');
+const starBackground = document.querySelector('.star-background');
+
+for (let i = 0; i < 100; i++) {
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  particle.style.top = `${Math.random() * 100}vh`;
+  particle.style.left = `${Math.random() * 100}vw`;
+  particle.style.animationDelay = `${Math.random() * 10}s`;
+  particleContainer.appendChild(particle);
+}
+
+for (let i = 0; i < 300; i++) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.left = `${Math.random() * 100}vw`;
+  starBackground.appendChild(star);
+}
+
+const slides = document.querySelector('.slides');
+const slide = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let index = 0;
+
+function showSlide(n) {
+  index += n;
+  if (index >= slide.length) {
+    index = 0;
+  }
+  if (index < 0) {
+    index = slide.length - 1;
+  }
+  slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+}
+
+prevBtn.addEventListener('click', () => showSlide(-1));
+nextBtn.addEventListener('click', () => showSlide(1));
+
+const hamburger = document.getElementById("hamburger");
+const sidebar = document.getElementById("sidebar");
+const closebtn = document.getElementById("closebtn");
+
+hamburger.addEventListener("click", () => {
+  sidebar.style.width = "250px";
+});
+
+closebtn.addEventListener("click", () => {
+  sidebar.style.width = "0";
+});
 </script>
 </body>
 </html>

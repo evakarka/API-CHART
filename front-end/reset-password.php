@@ -72,7 +72,7 @@ if ($mysqli->affected_rows) {
 <html>
 <head>
     <title>Reset Password</title>
-    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/style.css">
 </head>
