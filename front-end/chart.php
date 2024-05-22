@@ -4,29 +4,23 @@ $username = "root";
 $password = "";
 $dbname = "chart_data";
 
-// Δημιουργία σύνδεσης με τη βάση δεδομένων
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Έλεγχος σύνδεσης
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Πάρε το ID από το URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 $data = array();
 if ($id > 0) {
-    // Χρήση prepared statements για ασφαλή SQL ερώτημα
     $stmt = $conn->prepare("SELECT * FROM charts WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Δημιουργία των δεδομένων για το γράφημα ECharts
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        // Προσθήκη δεδομένων στον πίνακα $data
         $data['chart_name'] = $row['chart_name'];
         $data['chart_description'] = $row['chart_description'];
         $data['chart_type'] = $row['chart_type'];
@@ -48,7 +42,7 @@ $conn->close();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo isset($data['chart_name']) ? htmlspecialchars($data['chart_name']) : 'Chart name'; ?></title>
-  <!-- Εισαγωγή της βιβλιοθήκης ECharts -->
+  <!-- ECharts -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -103,7 +97,7 @@ $conn->close();
   <?php if (isset($data) && !empty($data)): ?>
     <h1><?php echo htmlspecialchars($data['chart_name']); ?></h1>
     <p><?php echo htmlspecialchars($data['chart_description']); ?></p>
-    <!-- Προσθήκη συνδέσμου για τη λήψη του αρχείου CSV -->
+    <!-- Download CSV file -->
     <?php if (!empty($data['chart_data'])): ?>
       <p><a href="download.php?id=<?php echo $id; ?>" class="btn">Download CSV file</a></p>
     <?php endif; ?>
@@ -112,12 +106,11 @@ $conn->close();
     <pre><?php echo htmlspecialchars(json_encode($data['chart_data'], JSON_PRETTY_PRINT)); ?></pre>
 
     <script>
-      // Δημιουργία του γραφήματος ECharts
+      // ECharts Chart
       var chartData = <?php echo json_encode($data['chart_data']); ?>;
       var chartContainer = document.getElementById('chart-container');
       var myChart = echarts.init(chartContainer);
 
-      // Ορισμός των δεδομένων για το γράφημα
       var options = {
           tooltip: {
               trigger: 'axis'
@@ -139,7 +132,6 @@ $conn->close();
           }))
       };
 
-      // Εφαρμογή των επιλογών στο γράφημα
       myChart.setOption(options);
     </script>
   <?php else: ?>

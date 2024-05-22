@@ -116,7 +116,6 @@
     var seriesData = [];
     var colors = ['#5470C6', '#EE6666', '#93C736', '#FF8C00']; 
 
-    // Ανάθεση χρωμάτων σε κάθε δεδομένο
     for (var i = 1; i < headers.length; i++) {
       var data = values.map(function(row) {
         return { value: parseFloat(row[i]), name: row[0] };

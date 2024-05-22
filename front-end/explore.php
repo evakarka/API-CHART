@@ -7,7 +7,7 @@ $password = "";
 $conn = new mysqli($host, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Σύνδεση απέτυχε: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 $sql = "SELECT * FROM charts";
@@ -26,8 +26,8 @@ $result = $conn->query($sql);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #0D0D2B; /* Background color */
-      color: #f3f4f6; /* Light text color for contrast */
+      background-color: #0D0D2B; 
+      color: #f3f4f6; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -35,7 +35,7 @@ $result = $conn->query($sql);
     }
     .navbar {
       width: 100%;
-      background-color: #0D0D2B; /* Background color */
+      background-color: #0D0D2B; 
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -45,7 +45,7 @@ $result = $conn->query($sql);
       z-index: 1000;
     }
     .navbar a {
-      color: #fff; /* White color for navbar links */
+      color: #fff;
       text-decoration: none;
       margin: 0 15px;
       font-size: 18px;
@@ -65,7 +65,7 @@ $result = $conn->query($sql);
     .hamburger div {
       width: 25px;
       height: 3px;
-      background-color: #fff; /* White color for hamburger menu */
+      background-color: #fff;
       margin: 4px 0;
     }
     .card-container {
@@ -78,28 +78,28 @@ $result = $conn->query($sql);
       width: 100%;
     }
     .card {
-      background-color: #1f1f44; /* Slightly lighter dark color for cards */
+      background-color: #1f1f44; 
       border-radius: 12px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 20px;
       width: 300px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      color: #f3f4f6; /* Light text color */
+      color: #f3f4f6;
     }
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .card h2 {
-      color: #FF4081; /* Highlight color for headings */
+      color: #FF4081;
       margin-bottom: 15px;
     }
     .card p {
-      color: #d1d1d1; /* Light gray for paragraph text */
+      color: #d1d1d1; 
       margin-bottom: 15px;
     }
     .btn {
-      background-color: #FF4081; /* Highlight color for buttons */
+      background-color: #FF4081; 
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -110,13 +110,13 @@ $result = $conn->query($sql);
       transition: background-color 0.3s ease;
     }
     .btn:hover {
-      background-color: #D93670; /* Slightly darker shade for button hover */
+      background-color: #D93670;
     }
     @media (max-width: 768px) {
       .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #0D0D2B; /* Background color */
+        background-color: #0D0D2B;
         position: absolute;
         top: 60px;
         width: 100%;

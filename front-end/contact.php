@@ -102,11 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var closebtn = document.getElementById('closebtn');
 
     hamburger.addEventListener('click', function() {
-        sidebar.style.width = '250px';  // Ανοίγει το sidebar
+        sidebar.style.width = '250px';  
     });
 
     closebtn.addEventListener('click', function() {
-        sidebar.style.width = '0';  // Κλείνει το sidebar
+        sidebar.style.width = '0';  
     });
 });
 </script>
