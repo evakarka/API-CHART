@@ -52,6 +52,11 @@ if (isset($_SESSION["user_id"])) {
     <a href="about.php">About</a>
     <a href="service.php">Services</a>
     <a href="contact.php">Contact</a>
+    <?php if (isset($user)): ?>
+      <a href="logout.php" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color: #f94ca4">Logout</a>
+    <?php else: ?>
+    <a href="upload.html">Add Chart</a>
+    <?php endif; ?>
   </div>
   <div class="hamburger" id="hamburger">
     <div></div>
