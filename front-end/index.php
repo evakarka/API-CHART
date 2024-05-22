@@ -84,19 +84,22 @@ body, html {
     </div>
   </div>
   <div class="logos">
-    <img src="https://via.placeholder.com/100" alt="Logo 1">
-    <img src="https://via.placeholder.com/100" alt="Logo 2">
-    <img src="https://via.placeholder.com/100" alt="Logo 3">
-    <img src="https://via.placeholder.com/100" alt="Logo 4">
+    <img src="img/c_5.jpg" alt="Logo 1">
+    <img src="img/c_6.jpg" alt="Logo 2">
+    <img src="img/c_12.jpg" alt="Logo 3">
+    <img src="img/c_9.jpg" alt="Logo 4">
   </div>
 </div>
 <div class="container">
   <h1>Image Slider</h1>
   <div class="slider">
     <div class="slides">
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 1"></div>
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 2"></div>
-      <div class="slide"><img src="https://via.placeholder.com/800x400" alt="Slide 3"></div>
+      <div class="slide"><img src="img/c_2.jpg" alt="Slide 1"></div>
+      <div class="slide"><img src="img/c_1.jpg" alt="Slide 2"></div>
+      <div class="slide"><img src="img/c_7.jpg" alt="Slide 3"></div>
+      <div class="slide"><img src="img/c_8.jpg" alt="Slide 4"></div>
+      <div class="slide"><img src="img/c_11.jpg" alt="Slide 5"></div>
+      <div class="slide"><img src="img/c_10.jpg" alt="Slide 6"></div>
     </div>
     <div class="slider-buttons">
       <button class="slider-button" id="prevBtn">&#10094;</button>
