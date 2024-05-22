@@ -381,9 +381,9 @@ p {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    max-width: 500px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
+    max-width: 500px; 
     max-height: 400px;
-    margin: 200px auto; /* Κεντράρει το κουτί οριζόντια */
+    margin: 200px auto; 
 }
 
 .boxtitle h2 {
@@ -442,12 +442,12 @@ p {
     outline: none;
 }
 .box {
-    max-width: 300px; /* Προσαρμόζει το μέγιστο πλάτος του κουτιού */
-    margin: 20px auto; /* Κεντράρει το κουτί οριζόντια */
-    padding: 15px; /* Προσθέτει εσωτερικό padding στο κουτί */
-    border-radius: 10px; /* Προσθέτει κυρτότητα στις γωνίες του κουτιού */
-    background-color: #f8f9fa; /* Χρώμα φόντου του κουτιού */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Προσθέτει σκιά στο κουτί */
+    max-width: 300px; 
+    margin: 20px auto; 
+    padding: 15px; 
+    border-radius: 10px; 
+    background-color: #f8f9fa; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
 }
 
 .btn{
@@ -462,8 +462,8 @@ p {
     transition: all .3s;
     margin-top: 10px;
     padding: 0px 10px;
-    text-align: center; /* Ευθυγράμμιση του κειμένου στο κέντρο */
-    line-height: 35px; /* Κεντράρισμα του κειμένου κάθετα μέσα στο κουμπί */
+    text-align: center; 
+    line-height: 35px; 
     
 }
 .btn:hover{
@@ -476,12 +476,12 @@ p {
     margin-bottom: 15px;
 }
 .btn-outline-primary {
-    border: 1px solid rgb(119, 44, 229); /* Μωβ περίγραμμα */
-    box-shadow: 0 0 10px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+    border: 1px solid rgb(119, 44, 229); 
+    box-shadow: 0 0 10px 0 rgba(186, 85, 211, 0.5); 
     /* rgb(186, 253, 211) */
 }
 .btn-sm {
-    box-shadow: 0 0 6px 0 rgba(186, 85, 211, 0.5); /* Μωβ σκιά */
+    box-shadow: 0 0 6px 0 rgba(186, 85, 211, 0.5); 
 }
 
 </style>
@@ -548,11 +548,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var closebtn = document.getElementById('closebtn');
 
     hamburger.addEventListener('click', function() {
-        sidebar.style.width = '250px';  // Ανοίγει το sidebar
+        sidebar.style.width = '250px';  
     });
 
     closebtn.addEventListener('click', function() {
-        sidebar.style.width = '0';  // Κλείνει το sidebar
+        sidebar.style.width = '0';  
     });
 });
 </script>
