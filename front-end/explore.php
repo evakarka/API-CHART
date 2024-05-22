@@ -178,7 +178,7 @@ $result = $conn->query($sql);
     <a href="contact.php">Contact</a>
     <a href="upload.html">Add Chart</a>
     <?php if (isset($user)): ?>
-      <a href="logout.php" class="text-white text-decoration-none px-3 py-1 rounded-4" style="background-color: #f94ca4">Logout</a>
+      <a href="logout.php" class="text-white text-decoration-none px-3 py-1 rounded-4">Logout</a>
     <?php endif; ?>
   </div>
   <div class="hamburger" id="hamburger">
