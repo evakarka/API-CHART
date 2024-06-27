@@ -1,16 +1,16 @@
 # API-CHART
 REST API WITH CHART
 
-# Web Application Overview
+## 📊 Web Application Overview
 This web application is developed using PHP and a MySQL database. The purpose of this application is to inform users about daily topics based on CSV tables. Each user can also upload their own CSV file and choose which type of chart they prefer (line, bar, pie, scatter). They can name and describe the chart, and then upload it. It is hosted locally using the XAMPP Control Panel. Below are the features and components of the application:
 
-## FEATURES
+## 🌟 Features
 - User signup and login
 - Email validation
 - CSV file upload and chart rendering
 - Session management
 
-## Implementation Features
+## ✨ Implementation Features
 - **Front-End:** Developed with Bootstrap, HTML and CSS for responsive design and ECharts for dynamic chart rendering.
 - **File Upload Handling:** Allows users to upload CSV files.
 - **Database Security:** Uses prepared statements to prevent SQL injection.
@@ -24,18 +24,18 @@ This web application is developed using PHP and a MySQL database. The purpose of
 - **Form Validation:** Implemented both client-side (HTML5 validation) and server-side (PHP).
 - **Cross-browser Compatibility:** Tested for compatibility with major browsers like Chrome, Firefox, and Safari.
 
-## Requirements
+## 🤔 Requirements
 - XAMPP Control Panel
 - Modern Web Browser
 
-## Setup
+## 🚀 Setup
 1. Clone the repository to your local machine.
 2. Import the SQL database file.
 3. Configure database connection in the PHP files.
 4. Open XAMPP Control Panel and start Apache and MySQL.
 5. Open a web browser and navigate to the application's URL.
 
-## Screenshots
+## 📸 Screenshots
 ![Screenshot 2024-05-30 204626](https://github.com/evakarka/API-CHART/assets/126707187/1507c02e-a546-483a-99fb-638f59f0527f)
 ![Screenshot 2024-05-30 204636](https://github.com/evakarka/API-CHART/assets/126707187/93d70bc9-dee8-4146-a83d-d63aaa85af33)
 ![Screenshot 2024-05-30 204706](https://github.com/evakarka/API-CHART/assets/126707187/b91ac173-027c-4c37-9ad9-3337e79558fa)
@@ -50,11 +50,8 @@ This web application is developed using PHP and a MySQL database. The purpose of
 ![image](https://github.com/evakarka/API-CHART/assets/126707187/684cb667-c068-4abd-aeba-73d4b05759b9)
 ![image](https://github.com/evakarka/API-CHART/assets/126707187/b54f3b60-7d38-4d96-bd06-9c2af95043e3)
 
-
-
-## Contributors
+## 👨‍💻 Contributors
 - [Karka Evangelia](https://github.com/evakarka) - Developer
 
-
-## License
-Live website hosted - see the [DailyNewsChart](https://dailynewschart.000webhostapp.com/front-end/index.php) file for details.
+## 📜 License
+Live website hosted - see the [DailyNewsChart](https://dailynewschart.000webhostapp.com/front-end/index.php) website for details.
